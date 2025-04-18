@@ -2,6 +2,11 @@ site_name: Spark GameDev Wiki
 site_url: https://github.com/FrostHoll/spark-gamedev-wiki
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - search.highlight
+    - search.suggest
 nav:
   - Главная: index.md
   - Наша команда:

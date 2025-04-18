@@ -1,0 +1,10 @@
+{
+  "strictLineBreaks": true,
+  "readableLineLength": false,
+  "showLineNumber": true,
+  "newFileLocation": "root",
+  "newFileFolderPath": "/attachments",
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "./attachments",
+  "alwaysUpdateLinks": true
+}

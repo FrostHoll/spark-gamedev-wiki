@@ -1,0 +1,35 @@
+site_name: Spark GameDev Wiki
+site_url: https://github.com/FrostHoll/spark-gamedev-wiki
+theme:
+  name: material
+nav:
+  - Главная: index.md
+  - Наша команда:
+    - Наша команда: team/team_index.md
+    - Сводка: 'https://docs.google.com/spreadsheets/d/10h4VtALQuqD2I97SMZjRGgB_mbOLreOIRDi3-VYRbuI/edit?usp=sharing'
+    - Личные дела:
+      - Александр: team/files/Alexander.md
+      - Рустем: team/files/Rustem.md
+      - Динар: team/files/Dinar.md
+      - Владимир: team/files/Vladimir.md
+      - Алексей: team/files/Alexey.md
+      - Аделина: team/files/Adelina.md
+      - Рената: team/files/Renata.md
+  - Проект:
+    - Проект: project/project_index.md
+  - Правила: 
+    - Правила: rules/rules_index.md
+    - Лирическое отступление: rules/lyrical_degression.md
+    - Формат: rules/format.md
+    - Термины и Звания: rules/terms.md
+    - Ответы на частые вопросы: rules/faq.md
+  - Гайды:
+    - Установка программ: guides/installation.md
+  - Материалы для изучения:
+    - Материалы: learn/learn_index.md
+    - 1-й уровень:
+      - База C# Metanit: learn/lvl_1/metanit_csharp.md
+      - 1.1 Сортировка сериалов: learn/lvl_1/1_1_sort.md
+markdown_extensions:
+  - admonition
+  - toc

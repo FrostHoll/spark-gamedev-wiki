@@ -11,6 +11,7 @@ nav:
   - Главная: 'index.md'
   - Наша команда:
     - Наша команда: 'team/team_index.md'
+    - Встречи: 'team/meetings.md'
     - Сводка: 'https://docs.google.com/spreadsheets/d/10h4VtALQuqD2I97SMZjRGgB_mbOLreOIRDi3-VYRbuI/edit?usp=sharing'
     - Личные дела:
       - Александр: 'team/files/Alexander.md'
@@ -37,9 +38,11 @@ nav:
       - База C# Metanit: 'learn/lvl_1/metanit_csharp.md'
       - 1.1 Сортировка сериалов: 'learn/lvl_1/1_1_sort.md'
     - 2-й уровень:
-      - Базы ООП: 'learn/lvl_2/OOP_base.md'
+      - База ООП: 'learn/lvl_2/OOP_base.md'
 markdown_extensions:
   - admonition
   - toc
+  - pymdownx.highlight
+  - pymdownx.superfences
 extra_css:
   - "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"

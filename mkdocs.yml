@@ -23,6 +23,7 @@ nav:
       - Рената: 'team/files/Renata.md'
   - Проект:
     - Проект: 'project/project_index.md'
+    - О MVP: 'project/mvp_reqs.md'
   - Правила: 
     - Правила: 'rules/rules_index.md'
     - Лирическое отступление: 'rules/lyrical_degression.md'

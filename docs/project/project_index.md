@@ -6,6 +6,8 @@
 
 Ссылка на GitHub [репозиторий](https://github.com/FrostHoll/SparkProject). Перед работой прочитайте этот [гайд](../guides/git.md).
 
+Ссылка на присоединение в [Strive](https://app.striveapp.ru/join/0a00285e-e23b-469b-8b4f-051b1b97bba2).
+
 ## Название
 
 Shardblood

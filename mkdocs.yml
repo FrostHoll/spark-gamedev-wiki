@@ -33,11 +33,13 @@ nav:
   - Гайды:
     - Установка программ: 'guides/installation.md'
     - Кто такой этот ваш Git: 'guides/git.md'
+    - Работа со Strive: 'guides/strive.md'
   - Материалы для изучения:
     - Материалы: 'learn/learn_index.md'
     - 1-й уровень:
       - База C# Metanit: 'learn/lvl_1/metanit_csharp.md'
       - 1.1 Сортировка сериалов: 'learn/lvl_1/1_1_sort.md'
+      - 1.2 Поверхность Unity: 'learn/lvl_1/1_2_unity_start.md'
     - 2-й уровень:
       - База ООП: 'learn/lvl_2/OOP_base.md'
 markdown_extensions:

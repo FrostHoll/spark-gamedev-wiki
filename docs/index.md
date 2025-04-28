@@ -16,15 +16,17 @@
 
 Наша команда - [**Буханочки**](team/team_index.md).
 
-Ссылка на вашу [беседу](https://t.me/+zqDyQTd0GLIxZTVi).
+[**Встречи**](team/meetings.md)
 
-Все предстоящие встречи вы можете посмотреть [здесь](team/meetings.md).
+[**Доска почета**](team/hall_of_fame.md)
 
 ## Мем дня
 
 <img src="attachments/meme1.png" width="400" height="400">
 
 ## Обновления
+
+**28.04** - Обновлена ссылка на Strive. Добавлена страница с [доской почета](team/hall_of_fame.md).
 
 **24.04** - Добавлена страница про [Strive](guides/strive.md) и материал для знакомства с [Unity](learn/lvl_1/1_2_unity_start.md).
 

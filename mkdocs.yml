@@ -12,6 +12,7 @@ nav:
   - Наша команда:
     - Наша команда: 'team/team_index.md'
     - Встречи: 'team/meetings.md'
+    - Доска почета: 'team/hall_of_fame.md'
     - Сводка: 'https://docs.google.com/spreadsheets/d/10h4VtALQuqD2I97SMZjRGgB_mbOLreOIRDi3-VYRbuI/edit?usp=sharing'
     - Личные дела:
       - Александр: 'team/files/Alexander.md'
@@ -42,6 +43,7 @@ nav:
       - 1.2 Поверхность Unity: 'learn/lvl_1/1_2_unity_start.md'
     - 2-й уровень:
       - База ООП: 'learn/lvl_2/OOP_base.md'
+      - 2.1 Абстрактные классы и интерфейсы: 'learn/lvl_2/2_1_abstracts_interfaces.md'
 markdown_extensions:
   - admonition
   - toc

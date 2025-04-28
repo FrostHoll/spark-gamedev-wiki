@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/index.md",
+                "file": "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "2_1_abstracts_interfaces"
             }
           }
         ]
@@ -170,9 +170,25 @@
   },
   "active": "7a1906bef9d4c5d6",
   "lastOpenFiles": [
-    "docs/learn/lvl_1/1_2_unity_start.md",
     "docs/index.md",
+    "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
+    "docs/team/files/Dinar.md",
+    "docs/team/hall_of_fame.md",
+    "docs/medals/hard_worker.png",
+    "docs/medals",
+    "docs/medals/smart_thinker.png",
+    "docs/team/attachments",
+    "docs/team/files/Alexander.md",
+    "docs/team/meetings.md",
+    "docs/guides/installation.md",
+    "docs/guides/strive.md",
+    "docs/project/mvp_reqs.md",
     "docs/learn/lvl_1/1_1_sort.md",
+    "docs/learn/lvl_1/1_2_unity_start.md",
+    "docs/learn/lvl_1/metanit_csharp.md",
+    "docs/learn/lvl_2/OOP_base.md",
+    "docs/attachments/meme1.png",
+    "docs/project/project_index.md",
     "docs/learn/lvl_1/attachments/1_2_unityevent_final.png",
     "docs/learn/lvl_1/attachments/1_2_door_empty.png",
     "docs/learn/lvl_1/attachments/1_2_unityevent_filled_ex.png",
@@ -180,20 +196,10 @@
     "docs/learn/lvl_1/attachments/1_2_unityevent_empty.png",
     "docs/learn/lvl_1/attachments/1_2_console_log.png",
     "docs/learn/lvl_1/attachments/1_2_script_on_object.png",
-    "docs/learn/lvl_1/attachments/1_2_inspector.png",
-    "docs/learn/lvl_1/attachments/1_2_area_creation.png",
-    "docs/learn/lvl_1/attachments/1_2_unity_ui.png",
-    "docs/project/project_index.md",
-    "docs/project/mvp_reqs.md",
     "docs/team/team_index.md",
-    "docs/guides/strive.md",
-    "docs/team/meetings.md",
-    "docs/learn/lvl_2/OOP_base.md",
     "docs/learn/learn_index.md",
-    "docs/guides/installation.md",
     "docs/guides/git.md",
     "docs/attachments",
-    "docs/learn/lvl_1/metanit_csharp.md",
     "docs/learn/lvl_1/attachments",
     "docs/learn/lvl_3",
     "docs/learn/lvl_2",
@@ -203,17 +209,12 @@
     "docs/guides/guides_index.md",
     "docs/guides",
     "docs/rules/rules_index.md",
-    "docs/project",
     "docs/rules/lyrical_degression.md",
     "docs/team/files/Vladimir.md",
     "docs/team/files/Alexey.md",
     "docs/team/files/Renata.md",
     "docs/team/files/Rustem.md",
     "docs/team/files/Adelina.md",
-    "docs/team/files/Alexander.md",
-    "docs/team/files/Dinar.md",
-    "docs/team/files",
-    "docs/rules/faq.md",
-    "docs/rules/terms.md"
+    "docs/rules/faq.md"
   ]
 }

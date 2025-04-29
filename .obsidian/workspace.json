@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
+                "file": "docs/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2_1_abstracts_interfaces"
+              "title": "index"
             }
           }
         ]
@@ -170,8 +170,9 @@
   },
   "active": "7a1906bef9d4c5d6",
   "lastOpenFiles": [
-    "docs/index.md",
+    "docs/team/meetings.md",
     "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
+    "docs/index.md",
     "docs/team/files/Dinar.md",
     "docs/team/hall_of_fame.md",
     "docs/medals/hard_worker.png",
@@ -179,7 +180,6 @@
     "docs/medals/smart_thinker.png",
     "docs/team/attachments",
     "docs/team/files/Alexander.md",
-    "docs/team/meetings.md",
     "docs/guides/installation.md",
     "docs/guides/strive.md",
     "docs/project/mvp_reqs.md",

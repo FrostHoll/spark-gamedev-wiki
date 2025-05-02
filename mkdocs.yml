@@ -44,6 +44,10 @@ nav:
     - 2-й уровень:
       - База ООП: 'learn/lvl_2/OOP_base.md'
       - 2.1 Абстрактные классы и интерфейсы: 'learn/lvl_2/2_1_abstracts_interfaces.md'
+    - 3-й уровень:
+      - SOLID: 'learn/lvl_3/solid.md'
+    - 4-й уровень:
+      - Хорошие практики: 'learn/lvl_4/best_practices.md'
 markdown_extensions:
   - admonition
   - toc

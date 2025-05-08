@@ -13,12 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/announces/05-02.md",
+                "file": "docs/team/hall_of_fame.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05-02"
+              "title": "hall_of_fame"
+            }
+          },
+          {
+            "id": "6f2f54c7a3813b5d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/team/files/Vladimir.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Vladimir"
             }
           },
           {
@@ -27,15 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/index.md",
+                "file": "docs/announces/05-02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "05-02"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -182,11 +197,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7a1906bef9d4c5d6",
+  "active": "77d5c5a7e200d885",
   "lastOpenFiles": [
+    "docs/team/team_index.md",
+    "docs/team/meetings.md",
+    "docs/team/hall_of_fame.md",
+    "docs/team/files/Vladimir.md",
     "docs/index.md",
-    "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
+    "docs/team/files/Dinar.md",
+    "docs/team/files/Renata.md",
+    "docs/medals/hard_worker.png",
+    "docs/medals/perfect_work.png",
+    "docs/medals/perfect_work.png",
+    "docs/medals/smart_thinker.png",
     "docs/announces/05-02.md",
+    "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
     "docs/announces",
     "docs/learn/lvl_4/best_practices.md",
     "docs/learn/lvl_3/solid.md",
@@ -194,17 +219,10 @@
     "docs/team/files/Adelina.md",
     "docs/attachments/meme1.jpg",
     "docs/attachments/meme1.png",
-    "docs/team/files/Renata.md",
-    "docs/team/files/Dinar.md",
     "docs/team/files/Alexey.md",
     "docs/team/files/Alexander.md",
     "docs/team/files/Rustem.md",
-    "docs/team/files/Vladimir.md",
-    "docs/team/meetings.md",
-    "docs/team/hall_of_fame.md",
-    "docs/medals/hard_worker.png",
     "docs/medals",
-    "docs/medals/smart_thinker.png",
     "docs/team/attachments",
     "docs/guides/installation.md",
     "docs/guides/strive.md",
@@ -218,9 +236,6 @@
     "docs/learn/lvl_1/attachments/1_2_door_empty.png",
     "docs/learn/lvl_1/attachments/1_2_unityevent_filled_ex.png",
     "docs/learn/lvl_1/attachments/1_2_unityevent_first.png",
-    "docs/learn/lvl_1/attachments/1_2_unityevent_empty.png",
-    "docs/learn/lvl_1/attachments/1_2_console_log.png",
-    "docs/team/team_index.md",
     "docs/learn/learn_index.md",
     "docs/guides/git.md",
     "docs/attachments",
@@ -228,7 +243,6 @@
     "docs/learn/lvl_3",
     "docs/learn/lvl_2",
     "docs/learn/lvl_1",
-    "docs/learn",
-    "docs/guides/guides_index.md"
+    "docs/learn"
   ]
 }

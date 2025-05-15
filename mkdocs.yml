@@ -45,6 +45,7 @@ nav:
       - База ООП: 'learn/lvl_2/OOP_base.md'
       - 2.1 Абстрактные классы и интерфейсы: 'learn/lvl_2/2_1_abstracts_interfaces.md'
       - 2.2 Корутины: 'learn/lvl_2/2_2_coroutines.md'
+      - 2.3 Паттерны проектирования (Начало): 'learn/lvl_2/2_3_patterns_basics.md'
     - 3-й уровень:
       - SOLID: 'learn/lvl_3/solid.md'
     - 4-й уровень:

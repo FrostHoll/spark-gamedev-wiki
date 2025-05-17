@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/announces/05-16.md",
+                "file": "docs/learn/lvl_1/1_2_unity_start.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05-16"
+              "title": "1_2_unity_start"
             }
           },
           {
@@ -35,7 +35,8 @@
               "title": "index"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -182,33 +183,34 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2b50a775220d6b4b",
+  "active": "d3f517182b3c0363",
   "lastOpenFiles": [
+    "docs/learn/lvl_1/1_2_unity_start.md",
+    "docs/attachments/meme1.png",
+    "docs/learn/lvl_2/2_2_coroutines.md",
+    "docs/learn/lvl_4/best_practices.md",
+    "docs/learn/learn_index.md",
+    "docs/medals/hard_worker.png",
+    "docs/medals/perfect_work.png",
+    "docs/medals/smart_thinker.png",
     "docs/index.md",
     "docs/announces/05-16.md",
     "docs/announces/05-02.md",
     "docs/learn/lvl_2/2_3_patterns_basics.md",
     "docs/team/meetings.md",
     "docs/team/hall_of_fame.md",
-    "docs/learn/lvl_2/2_2_coroutines.md",
     "docs/attachments/meme1.jpg",
     "docs/attachments/meme1.png",
-    "docs/learn/lvl_4/best_practices.md",
     "docs/learn/lvl_2/attachments/thin.png",
     "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
     "docs/learn/lvl_2/attachments/2_2_frame_coroutine.png",
     "docs/learn/lvl_2/attachments/2_2_frame_empty.png",
     "docs/learn/lvl_2/attachments",
-    "docs/learn/lvl_1/1_2_unity_start.md",
     "docs/learn/lvl_3/solid.md",
     "docs/team/files/Vladimir.md",
     "docs/team/team_index.md",
     "docs/team/files/Dinar.md",
     "docs/team/files/Renata.md",
-    "docs/medals/hard_worker.png",
-    "docs/medals/perfect_work.png",
-    "docs/medals/perfect_work.png",
-    "docs/medals/smart_thinker.png",
     "docs/announces",
     "docs/learn/lvl_4",
     "docs/team/files/Adelina.md",
@@ -223,8 +225,6 @@
     "docs/project/mvp_reqs.md",
     "docs/learn/lvl_1/1_1_sort.md",
     "docs/learn/lvl_1/metanit_csharp.md",
-    "docs/learn/lvl_2/OOP_base.md",
-    "docs/project/project_index.md",
     "docs/attachments",
     "docs/learn/lvl_1/attachments",
     "docs/learn/lvl_3",

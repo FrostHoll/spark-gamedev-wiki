@@ -1,7 +1,5 @@
 <img src="attachments/meme1.png" width="400" height="400">
 
-*(это я на каждом нашем онлайн собрании)*
-
 ## Быстрые ссылки
 
 [**Буханочки**](team/team_index.md)

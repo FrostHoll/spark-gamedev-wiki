@@ -1,56 +1,37 @@
 {
   "main": {
-    "id": "267b479fbcac4913",
+    "id": "fe7aeff3151057c6",
     "type": "split",
     "children": [
       {
-        "id": "6164938c0f13e09b",
+        "id": "ff27e53a8f00deba",
         "type": "tabs",
         "children": [
           {
-            "id": "2b50a775220d6b4b",
+            "id": "e3dea16bdce3b93b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/learn/lvl_1/1_2_unity_start.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "1_2_unity_start"
-            }
-          },
-          {
-            "id": "d3f517182b3c0363",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/learn/lvl_2/2_4_unity_events.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2_4_unity_events"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "58ca4d30ad73529a",
+    "id": "6c7b2031e619c4b0",
     "type": "split",
     "children": [
       {
-        "id": "b3b32dec8271728f",
+        "id": "3424e7feaffe47d1",
         "type": "tabs",
         "children": [
           {
-            "id": "b607cbba739faacc",
+            "id": "4cadd05ecfeafa80",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -63,7 +44,7 @@
             }
           },
           {
-            "id": "2efca41a3ccd6f9d",
+            "id": "39b4e00ed8419c8d",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -80,7 +61,7 @@
             }
           },
           {
-            "id": "cf62cf6f85fbf57b",
+            "id": "bee14d6dcb10e5bb",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -96,20 +77,19 @@
     "width": 300
   },
   "right": {
-    "id": "3a0ecd9ac8c5dd0c",
+    "id": "38aee5d3247deeab",
     "type": "split",
     "children": [
       {
-        "id": "e8339e617c41dff2",
+        "id": "814feeeea0c2eadb",
         "type": "tabs",
         "children": [
           {
-            "id": "c0c7a0f76121741e",
+            "id": "4120d03a1760e454",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/learn/lvl_2/2_4_unity_events.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,25 +99,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 2_4_unity_events"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "578247ee3fa2d67d",
+            "id": "67ccd9cc8491c01b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/learn/learn_index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from learn_index"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "a0590317796bf6bf",
+            "id": "ea1fd5af4e8bac0a",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -152,18 +131,17 @@
             }
           },
           {
-            "id": "310047e8cfe9daec",
+            "id": "d26dc84b74c99f6d",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/learn/learn_index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of learn_index"
+              "title": "Outline"
             }
           }
         ]
@@ -183,52 +161,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d3f517182b3c0363",
-  "lastOpenFiles": [
-    "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
-    "docs/learn/lvl_2/2_3_patterns_basics.md",
-    "docs/learn/lvl_2/2_2_coroutines.md",
-    "docs/learn/lvl_2/2_4_unity_events.md",
-    "docs/learn/lvl_2/attachments/2_4_dead_or_alive.png",
-    "docs/learn/lvl_2/attachments/2_4_event_inspector.png",
-    "docs/learn/lvl_2/attachments/2_2_frame_coroutine.png",
-    "docs/learn/lvl_2/attachments/2_2_frame_empty.png",
-    "docs/learn/lvl_1/1_2_unity_start.md",
-    "docs/learn/learn_index.md",
-    "docs/index.md",
-    "docs/learn/lvl_2/OOP_base.md",
-    "docs/learn/lvl_2/attachments/thin.png",
-    "docs/attachments/meme1.png",
-    "docs/learn/lvl_4/best_practices.md",
-    "docs/medals/hard_worker.png",
-    "docs/medals/perfect_work.png",
-    "docs/medals/smart_thinker.png",
-    "docs/announces/05-16.md",
-    "docs/announces/05-02.md",
-    "docs/team/meetings.md",
-    "docs/team/hall_of_fame.md",
-    "docs/attachments/meme1.jpg",
-    "docs/learn/lvl_2/attachments",
-    "docs/learn/lvl_3/solid.md",
-    "docs/team/files/Vladimir.md",
-    "docs/team/team_index.md",
-    "docs/team/files/Dinar.md",
-    "docs/team/files/Renata.md",
-    "docs/announces",
-    "docs/learn/lvl_4",
-    "docs/team/files/Adelina.md",
-    "docs/team/files/Alexey.md",
-    "docs/team/files/Alexander.md",
-    "docs/team/files/Rustem.md",
-    "docs/medals",
-    "docs/team/attachments",
-    "docs/guides/installation.md",
-    "docs/guides/strive.md",
-    "docs/project/mvp_reqs.md",
-    "docs/attachments",
-    "docs/learn/lvl_1/attachments",
-    "docs/learn/lvl_3",
-    "docs/learn/lvl_2",
-    "docs/learn/lvl_1"
-  ]
+  "active": "e3dea16bdce3b93b",
+  "lastOpenFiles": []
 }

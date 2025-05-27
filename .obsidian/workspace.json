@@ -27,11 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< Updated upstream
                 "file": "docs/team/hall_of_fame.md",
+=======
+                "file": "docs/learn/lvl_2/2_4_unity_events.md",
+>>>>>>> Stashed changes
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< Updated upstream
               "title": "hall_of_fame"
             }
           },
@@ -61,6 +66,9 @@
               },
               "icon": "lucide-file",
               "title": "meetings"
+=======
+              "title": "2_4_unity_events"
+>>>>>>> Stashed changes
             }
           }
         ],
@@ -137,7 +145,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/learn/learn_index.md",
+                "file": "docs/learn/lvl_2/2_4_unity_events.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +155,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for learn_index"
+              "title": "Backlinks for 2_4_unity_events"
             }
           },
           {
@@ -213,27 +221,42 @@
   },
   "active": "d3f517182b3c0363",
   "lastOpenFiles": [
+<<<<<<< Updated upstream
     "docs/team/meetings.md",
     "docs/team/files/Dinar.md",
     "docs/team/hall_of_fame.md",
     "docs/index.md",
     "docs/learn/lvl_1/1_2_unity_start.md",
     "docs/attachments/meme1.png",
+=======
+>>>>>>> Stashed changes
     "docs/learn/lvl_2/2_2_coroutines.md",
-    "docs/learn/lvl_4/best_practices.md",
+    "docs/learn/lvl_2/2_4_unity_events.md",
+    "docs/learn/lvl_2/attachments/2_4_dead_or_alive.png",
+    "docs/learn/lvl_2/attachments/2_4_event_inspector.png",
+    "docs/learn/lvl_2/attachments/2_2_frame_coroutine.png",
+    "docs/learn/lvl_2/attachments/2_2_frame_empty.png",
+    "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
+    "docs/learn/lvl_2/2_3_patterns_basics.md",
+    "docs/learn/lvl_1/1_2_unity_start.md",
     "docs/learn/learn_index.md",
+    "docs/index.md",
+    "docs/learn/lvl_2/OOP_base.md",
+    "docs/learn/lvl_2/attachments/thin.png",
+    "docs/attachments/meme1.png",
+    "docs/learn/lvl_4/best_practices.md",
     "docs/medals/hard_worker.png",
     "docs/medals/perfect_work.png",
     "docs/medals/smart_thinker.png",
     "docs/announces/05-16.md",
     "docs/announces/05-02.md",
+<<<<<<< Updated upstream
     "docs/learn/lvl_2/2_3_patterns_basics.md",
+=======
+    "docs/team/meetings.md",
+    "docs/team/hall_of_fame.md",
+>>>>>>> Stashed changes
     "docs/attachments/meme1.jpg",
-    "docs/attachments/meme1.png",
-    "docs/learn/lvl_2/attachments/thin.png",
-    "docs/learn/lvl_2/2_1_abstracts_interfaces.md",
-    "docs/learn/lvl_2/attachments/2_2_frame_coroutine.png",
-    "docs/learn/lvl_2/attachments/2_2_frame_empty.png",
     "docs/learn/lvl_2/attachments",
     "docs/learn/lvl_3/solid.md",
     "docs/team/files/Vladimir.md",
@@ -242,7 +265,6 @@
     "docs/announces",
     "docs/learn/lvl_4",
     "docs/team/files/Adelina.md",
-    "docs/attachments/meme1.png",
     "docs/team/files/Alexey.md",
     "docs/team/files/Alexander.md",
     "docs/team/files/Rustem.md",
@@ -251,8 +273,6 @@
     "docs/guides/installation.md",
     "docs/guides/strive.md",
     "docs/project/mvp_reqs.md",
-    "docs/learn/lvl_1/1_1_sort.md",
-    "docs/learn/lvl_1/metanit_csharp.md",
     "docs/attachments",
     "docs/learn/lvl_1/attachments",
     "docs/learn/lvl_3",

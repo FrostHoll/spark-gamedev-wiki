@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/index.md",
+                "file": "docs/team/meetings.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "meetings"
             }
           }
         ]
@@ -170,10 +170,12 @@
   },
   "active": "7c77335319ad8165",
   "lastOpenFiles": [
-    "docs/learn/lvl_2/2_3_patterns_basics.md",
-    "docs/learn/lvl_2/2_2_coroutines.md",
+    "docs/team/team_index.md",
+    "docs/team/files/Alexey.md",
     "docs/team/meetings.md",
     "docs/index.md",
+    "docs/learn/lvl_2/2_3_patterns_basics.md",
+    "docs/learn/lvl_2/2_2_coroutines.md",
     "docs/learn/lvl_2/attachments/2_4_event_inspector.png",
     "docs/learn/lvl_2/attachments/2_4_dead_or_alive.png",
     "docs/learn/lvl_2/2_4_unity_events.md",
@@ -196,12 +198,10 @@
     "docs/learn/lvl_2/attachments",
     "docs/learn/lvl_3/solid.md",
     "docs/team/files/Vladimir.md",
-    "docs/team/team_index.md",
     "docs/team/files/Renata.md",
     "docs/announces",
     "docs/learn/lvl_4",
     "docs/team/files/Adelina.md",
-    "docs/team/files/Alexey.md",
     "docs/team/files/Alexander.md",
     "docs/team/files/Rustem.md",
     "docs/medals",

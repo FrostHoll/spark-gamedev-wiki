@@ -13,7 +13,6 @@
 	- [Динар](files/Dinar.md)
 - Воины:
 	- [Владимир](files/Vladimir.md)
-	- [Алексей](files/Alexey.md)
 - Стажеры:
 	- [Аделина](files/Adelina.md)
 	- [Рената](files/Renata.md)

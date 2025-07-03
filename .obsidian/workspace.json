@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/team/team_index.md",
+                "file": "docs/learn/lvl_2/2_4_unity_events.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "team_index"
+              "title": "2_4_unity_events"
             }
           },
           {
@@ -184,8 +184,8 @@
   },
   "active": "68a648ef6852eb74",
   "lastOpenFiles": [
-    "docs/announces/06-29.md",
     "docs/team/team_index.md",
+    "docs/announces/06-29.md",
     "docs/team/files/Adelina.md",
     "docs/team/files/Alexander.md",
     "docs/team/files/Alexey.md",

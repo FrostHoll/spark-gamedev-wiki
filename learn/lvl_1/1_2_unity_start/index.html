@@ -1,0 +1,2281 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/FrostHoll/spark-gamedev-wiki/learn/lvl_1/1_2_unity_start/">
+      
+      
+        <link rel="prev" href="../1_1_sort/">
+      
+      
+        <link rel="next" href="../../lvl_2/OOP_base/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>1.2 Поверхность Unity - Spark GameDev Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12-unity" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-header__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spark GameDev Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.2 Поверхность Unity
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../team/team_index/" class="md-tabs__link">
+          
+  
+  
+  Наша команда
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../project/project_index/" class="md-tabs__link">
+          
+  
+  
+  Проект
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../rules/rules_index/" class="md-tabs__link">
+          
+  
+  
+  Правила
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/installation/" class="md-tabs__link">
+          
+  
+  
+  Гайды
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../learn_index/" class="md-tabs__link">
+          
+  
+  
+  Материалы для изучения
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-nav__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spark GameDev Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Главная
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Наша команда
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/team_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/meetings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Встречи
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/hall_of_fame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Доска почета
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/spreadsheets/d/10h4VtALQuqD2I97SMZjRGgB_mbOLreOIRDi3-VYRbuI/edit?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Сводка
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Личные дела
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Личные дела
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Hasan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хасан
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexander/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Александр
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Rustem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рустем
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Dinar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Динар
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Vladimir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Владимир
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Алексей
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Adelina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Аделина
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Renata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рената
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Проект
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/project_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/mvp_reqs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    О MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Правила
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/rules_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/lyrical_degression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Лирическое отступление
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Формат
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/terms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Термины и Звания
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ответы на частые вопросы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Гайды
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Гайды
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Установка программ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Кто такой этот ваш Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/strive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Работа со Strive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Материалы для изучения
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Материалы для изучения
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Материалы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            1-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metanit_csharp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База C# Metanit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_1_sort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 Сортировка сериалов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1.2 Поверхность Unity
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2 Поверхность Unity
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Знакомимся с движком
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Постановка задачи
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thought-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Немного Thought process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Немного Thought process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use-case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Реализация
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Архитектура
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Итого
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Реализация
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Реализация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с областью
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Инспектор
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Тэг игрока
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пишем событие
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Дверь
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Белыми нитками шиты
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Заключение
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            2-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_2/OOP_base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База ООП
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_2/2_1_abstracts_interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1 Абстрактные классы и интерфейсы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_2/2_2_coroutines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2 Корутины
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_2/2_3_patterns_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3 Паттерны проектирования. Часть 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_2/2_4_unity_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.4 События в Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    3-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            3-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_3/solid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SOLID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            4-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_4/best_practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хорошие практики
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Знакомимся с движком
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Постановка задачи
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thought-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Немного Thought process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Немного Thought process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use-case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Реализация
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Архитектура
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Итого
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Реализация
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Реализация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Работа с областью
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Инспектор
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Тэг игрока
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пишем событие
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Дверь
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Белыми нитками шиты
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Заключение
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="12-unity">1.2 Смотрим на поверхность Unity</h1>
+<p>Всех приветствую на борту корабля <strong>"Великие плывуны Unity"</strong>. Сегодня я расскажу вам немножечко о Unity. Причем плавать мы будем именно на поверхности, чтобы не захлебнуться.</p>
+<h2 id="_1">Знакомимся с движком</h2>
+<p>Условимся, что вы уже прочитали статью про <a href="../../../guides/installation/">установку Unity</a>, и он у вас уже готов к работе.</p>
+<p>Давайте посмотрим на наш прекрасный интерфейс:</p>
+<p><img alt="" src="../attachments/1_2_unity_ui.png" /></p>
+<p>(Если картинку плохо видно, откройте ее в новой вкладке)</p>
+<p>Под номером 1 - Иерархия объектов на сцене. В самом верху <code>SampleScene</code> - наша открытая сцена. Все объекты на ней приведены под ней - они являются ее <strong>дочерними объектами</strong> (у SampleScene есть треугольничек для скрытия/раскрытия списка, объекты ниже на одну табуляцию правее). Запомните, что это называется иерархией, и как выглядят дочерние объекты. Эти понятия, и как их распознать будут нам очень нужны.</p>
+<p>Под номером 2 - Окно <code>Project</code> и, собственно, файлы, находящиеся в проекте. Сами файлы. Сцены тут тоже есть - загляните в папочку <code>Scenes</code>. Здесь размещаются все файлы проекта. Они создаются нажатием правой кнопки мыши по пустому месту, либо перетаскиваются из других папок. Все файлы желательно разделять по папкам - скрипты в <code>Scripts</code>, спрайты в <code>Sprites</code>, модели в <code>Models</code> и так далее.</p>
+<p>Под номером 3 - окно <code>Scene</code>. Тут мы можем перемещаться по открытой сцене. Делать это очень просто: в окне сцены зажимаем правую кнопку мыши (далее - ПКМ), и если двигать ее, мы оглядываемся. Чтобы перемещаться, при зажатой ПКМ нажимаем WASD. Если скорости недостаточно, при перемещении можно зажать Shift. Можно отрегулировать скорость, если зажать ПКМ и крутить колесо мыши. Если вдруг потерялись на сцене, можете дважды кликнуть по любому объекту в иерархии, и вы на сцене окажетесь рядом с ним.</p>
+<p>Тут же под номером 3.а - инструменты. В первой части инструменты (сверху вниз): перемещение по сцене, перемещение объекта по координатам, поворот объекта, изменение размера объекта, работа с объектами интерфейса и 2D и универсальный инструмент, объединяющий предыдущие. Во второй части кнопки скрытия/отображения некоторых частей интерфейса.</p>
+<p>Под номером 4 - Инспектор. Когда мы выберем любой объект на сцене или в файлах проекта, там покажутся все данные и параметры выбранного объекта. С ним мы будем работать даже чаще, чем с окном сцены.</p>
+<h2 id="_2">Постановка задачи</h2>
+<p>Так, мы же не побаловаться сюда пришли, верно? Поэтому выполним небольшую задачку:</p>
+<div class="admonition note">
+<p class="admonition-title">Задача</p>
+<p>Необходимо реализовать дверь, которая открывается когда игрок подходит к ней.</p>
+</div>
+<p>Вроде бы задача максимально приближенная к нашим реальным.</p>
+<h2 id="thought-process">Немного Thought process</h2>
+<p>Давайте я на примере распишу, <strong>как</strong> я подхожу к решению подобных задач.</p>
+<h3 id="use-case">Use-case</h3>
+<p>Сначала разбиваем задачу на use-case'ы в голове. Это уже звучит страшно, но не ссым в штаны, все очень просто:</p>
+<p>Из объектов в задаче у нас: Дверь, Игрок.</p>
+<p>Поведение: Дверь открывается, Игрок подходит.</p>
+<p>Условия: Дверь открывается только, если подходит именно игрок.</p>
+<h3 id="_3">Реализация</h3>
+<p>Теперь думаем про реализацию:</p>
+<p>Что означает "дверь открывается"? Условимся, что если сама дверь отъедет, то она открылась. Это значит, что нам достаточно сдвинуть ее по координатам, чтобы она открылась.</p>
+<p>Что означает "подошел игрок"? Подошел ведь куда-то, верно? Значит должна быть область, которая может знать, что в нее что-то вошло. Для этого подойдет обычный коллайдер-триггер. Другой вопрос: как мы узнаем, что подошел именно игрок? Триггер срабатывает на любые вхождения в область, поэтому нам нужно отделить игрока. Для такого есть два варианта: попробовать найти у него компонент, который есть <strong>только</strong> у игрока, либо просмотреть на наличие тэга, который есть <strong>только</strong> у игрока. Компонента у нас такого нет, давайте ради простоты ограничимся тэгом.</p>
+<h3 id="_4">Архитектура</h3>
+<p>И напоследок - составляем мини архитектуру. Обосрались? Что еще раз? Тише, тише, я просто говорю умными словами, поясняю:</p>
+<p>Нам нужно сделать область, которая будет ждать, пока в нее кто-то войдет. Если в нее вошел игрок, отодвигаем дверь по координатам. Делим это все по этапам:</p>
+<ol>
+<li>Ждем пока в область кто-то войдет;</li>
+<li>Проверяем игрок ли это;</li>
+<li>Если да, отодвигаем дверь.</li>
+</ol>
+<p>Смотрим, сколько из этого получается скриптов. Если вы сказали, что это все один скрипт, то поздравляю! Первый табурет уже навис над вашей головой! Только не смотрите наверх...</p>
+<p>Первый пункт точно берем в один скрипт. Туда же можно и второй пункт - получится скрипт, который ждет вхождения игрока в область.</p>
+<p>А вот насчет третьего... Если мы запихнем его туда же, то получится дверь, которая открывается только если игрок подошел в указанную область. Но в игре вряд ли <strong>только двери будут открываться</strong> при вхождении игрока в область... Да и двери вряд ли будут открываться <strong>только</strong> таким образом. Если мы так сделаем, нам придется писать тот же код, если, например, нам нужно будет при вхождении в область создавать врагов. Поэтому - рубим их пополам!</p>
+<h3 id="_5">Итого</h3>
+<p>Первый скрипт - какое-то действие, когда игрок входит в область триггера. Назовем его <code>PlayerTriggerArea</code>.</p>
+<p>Второй скрипт - открытие двери. Ну и все остальное, что еще с дверью можно делать тоже будет там. Называем <code>Door</code>.</p>
+<p>Надеюсь, как я пришел к таким выводам ясно. Конечно, для такого разбора нужна практика и немного опыта, но это все у вас приобретется со временем.</p>
+<h2 id="_6">Реализация</h2>
+<h3 id="_7">Работа с областью</h3>
+<p>Ну что, поехали. Начнем с области:</p>
+<p>Создаем в папке Scripts новый скрипт: кликаем внутри папки ПКМ, выбираем Create -&gt; MonoBehavior Script. Называем его, как мы задумывали, и окунаемся в несчастное тыканье по клавиатуре.</p>
+<p>Итак. Если на объекте есть коллайдер-триггер (у нашей области он будет), то в скрипте при вхождении чего-либо в область, будет вызываться метод OnTriggerEnter. Он уже встроен, и нам только нужно написать что делать, если такое случилось:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Он у нас пока пустой, но присмотритесь: здесь есть параметр <code>other</code> типа <code>Collider</code>. Из этого параметра можно получить информацию о объекте, который вошел в эту область. Сечете, что произойдет дальше? Только надо помнить: на конце метода написано Enter, следовательно он <strong>вызовется один раз, когда объект вошел в область</strong>. Если он выйдет и зайдет обратно, он вызовется снова. Короче, срабатывает один раз, когда игрок хотя бы одним пикселем оказывается внутри. Работает отдельно для каждого объекта, который в нем оказался.</p>
+<p>Давайте для прикола выведем имя объекта в консоль, если он вошел в область. Писать в консоль можно через <code>Debug.Log()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;В область вошел: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_8">Инспектор</h3>
+<p>А давайте сразу проверим, что все работает. Сохраняем скрипт (Ctrl + S) и возвращаемся в редактор.</p>
+<p>Нам нужно сначала сделать область. Пусть это будет невидимый кубик. Переходим в иерархию, кликаем по ней ПКМ, выбираем 3D Object -&gt; Cube. Сразу же даем ей говорящее имя - <code>Area</code>.</p>
+<p><img alt="" src="../attachments/1_2_area_creation.png" /></p>
+<p>Получается нечто подобное. У нас куб сразу выбран, и переместим его куда-нибудь ближе к полу. После этого нам надо настроить саму область (коллайдер). Но перед этим взглянем на инспектор.</p>
+<p><img alt="" src="../attachments/1_2_inspector.png" /></p>
+<p>Смотрим, что у нас есть в инспекторе:</p>
+<p>1 - Часть <code>GameObject</code>. GameObject - это компонент, который есть у каждого объекта, который есть на сцене. В нем устанавливается имя. Так же возле имени есть галочка - показатель того, включен ли объект на сцене, или нет. Попробуйте ради прикола выключить что-то. Получилось? Верните обратно. Также здесь можно выставить тэг для объекта (обратите внимание), и слой, на котором объект находится. Про Static это вообще отдельная речь, пока не трогаем его вообще.</p>
+<p>2 - Компонент <code>Transform</code>. Он отвечает за расположение объекта на сцене. Он есть у каждого GameObject'а и к нему очень просто получить доступ через <code>.transform</code>. Устанавливает позицию по координатам (Position), поворот по каждой из осей (Rotation) и размер (Scale).</p>
+<p>3 - Компоненты <code>Mesh Filter</code> и <code>Mesh Renderer</code>. Вообще, кстати все блоки у объекта в инспекторе - компоненты. Конкретно эти два отвечают за то, как объект выглядит - его модель и материалы соответственно. Заметьте, что их можно тоже выключить - у них есть галочка. Попробуйте выключить Mesh Renderer. Получилось? Молодцы, верните как было.</p>
+<p>4 - Компонент <code>Box Collider</code>. Один из видов коллайдеров. Коллайдеры отвечают за твердость объекта, за область в которой он будет твердым, и прочие штуки. У него есть <code>Edit Collider</code> и <code>Is Trigger</code>. Нажмите по первой кнопке. На сцене у кубика появятся маленькие зеленые точки. Если вы за них подергаете, сможете менять область твердости. Сделаете как вам удобно. Заметьте, визуальная часть кубика не двигается, только зеленая окантовка. Эта окантовка и есть область коллайдера. Затем выставим галочку Is Trigger. Если она выставлена, объект перестанет быть твердым, но при этом будет ждать, пока объекты будут попадать внутрь заданной области. Это нам и нужно.</p>
+<p>Любые другие компоненты можно добавлять через кнопку <code>Add Component</code> снизу. Там при нажатии появится менюшка для выбора, можете по ней прогуляться ради интереса, только не заблудитесь.</p>
+<p>Фухх, разобрались. Давайте к нашим баранам.</p>
+<p>Находим написанный нами скрипт <code>PlayerTriggerArea</code> в файлах проекта. Теперь внимание! Факт для взрыва мозга! Скрипт, который мы написали, это... <strong>тоже компонент</strong>! Только пока ни на чем не висит... Давайте исправим это.</p>
+<p>Зажимаем левую кнопку мыши над скриптом в файлах проекта, и аккуратненько тянем его в иерархию. Отпускаем кнопку, когда курсор оказался под нашим объектом Area. И скрипт уже висит на нем в виде компонента!</p>
+<p><img alt="" src="../attachments/1_2_script_on_object.png" /></p>
+<p>Вот он, наш родненький! На месте!</p>
+<p>Если ошиблись и кинули не на тот объект, у каждого компонента есть справа кнопка-троеточие. Если по нему нажмете, там есть кнопка <code>Remove Component</code>, чтобы убрать его.</p>
+<p>Давайте же теперь проверим. Нажимаем в самом верху редактора кнопочку играть.</p>
+<p>Вместо окна сцены открывается окно игры (Game). Но не боимся, окно сцены там же рядом. Сфокусируемся на тесте.</p>
+<p>Рядом с окном файлов проекта (Project) есть вкладочка консоли (Console). Откроем ее. Теперь, если мы войдем в область, выйдем из области и снова войдем, в консоли должно появится это:</p>
+<p><img alt="" src="../attachments/1_2_console_log.png" /></p>
+<p>Наш скрипт работает, и даже правильно определяет игрока! Шучу, конечно, игрока он не определяет. Если вы в окне сцены перетащите любой другой физичный объект в область, он тоже высветится. Но уже что-то работает, и мы молодцы!</p>
+<h3 id="_9">Тэг игрока</h3>
+<p>Возвращаемся в код. Нам нужно узнать по тэгу, игрок это или нет.</p>
+<p>Напишем условие. Проверку тэга можно сделать прямо у того самого параметра <code>other</code> через метод <code>CompareTag()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">))</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>В скобочках указываем строку-название тэга. Пишем "Player" - встроенный тэг Unity. (Не забудьте указать его у самого игрока! Вы теперь знаете, где это делается) Он вернет <code>true</code>, если у данного объекта есть такой тэг.</p>
+<p>Можете переместить вывод в консоль, который у нас уже есть, внутрь этого условия. Вернитесь в редактор и проверьте, все ли работает точно так же.</p>
+<h3 id="_10">Пишем событие</h3>
+<p>Теперь нам остается открыть дверь! Которой у нас нет... Давайте вот что сделаем:</p>
+<p>Когда игрок вошел в область, мы должны что-то делать, верно? В нашем случае открывать дверь. Если мы в этом скрипте напишем в явном виде открытие двери, то какой смысл от того, чтобы писать два скрипта? Мы сделаем так, чтобы можно было делать все что угодно. Вообще все.</p>
+<p>Вхождение в область это событие. Не такое, конечно, значимое, но все же. И давайте сделаем это событием, используя <code>UnityEvent</code>.</p>
+<p>Выше метода <code>OnTriggerEnter</code> напишем новое поле. (проследите, что сверху скрипта появилась строчка <code>using UnityEngine.Events</code>)</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnPlayerEnter</span><span class="p">;</span>
+</code></pre></div>
+<p>Чтобы разобраться получше, сохраним, и сразу перейдем в редактор. У нашего скрипта появилась такая штука:</p>
+<p><img alt="" src="../attachments/1_2_unityevent_empty.png" /></p>
+<p>Если мы нажмем плюсик, то появится вот это:</p>
+<p><img alt="" src="../attachments/1_2_unityevent_first.png" /></p>
+<p>У нас доступно пустое поле <code>None (Object)</code>. Если мы перетащим из иерархии любой объект со сцены, откроется доступ к списку, у которого сейчас значение <code>No Function</code>. Для примера перетащите из иерархии Directional Light. В списке появится список компонентов, которые на нем висят. При наведении на каждый компонент, появятся доступные методы у этого компонента. При выборе некоторых под этим списочком появится поле для ввода значения. Так что это такое?</p>
+<p>Это список вызываемых методов, который выполнится, когда событие произойдет. В него можно через плюсик добавлять сколько угодно объектов, и у них вызывать нужные методы и передавать параметр. Удобно, правда? Вместо того, чтобы писать в скрипте ссылку на какой-то объект, мы сами в инспекторе выбираем, что произойдет. Для примера выберите любой метод из доступных. Я выберу отключение объекта - (GameObject -&gt; SetActive):</p>
+<p><img alt="" src="../attachments/1_2_unityevent_filled_ex.png" /></p>
+<p>Осталось активировать это событие в коде. Помним, что нам нужно это сделать, когда игрок входит в область. Активация события выглядит вот так:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OnPlayerEnter</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Можем сохранить, и проверить. При вхождении игроком в область свет на сцене <strong>отключается</strong>. При повторном вхождении <strong>не включается</strong>, потому что происходит <strong>одно и то же</strong> - мы обращаемся к Directional Light, у него к компоненту <code>GameObject</code> и вызываем метод <code>SetActive</code> с параметром <code>false</code> (мы не прожали галочку под <code>GameObject.SetActive</code>). Его никто обратно не включает, поэтому ничего другого и не происходит.</p>
+<p>Итоговый скрипт для проверки:</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine.Events</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlayerTriggerArea</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnPlayerEnter</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTriggerEnter</span><span class="p">(</span><span class="n">Collider</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">CompareTag</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">OnPlayerEnter</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Поздравляю! Мы написали скрипт на уровне полу-профессионала, который идеально работает! Мы можем указывать вызов любых методов у любых объектов и можете спокойно поиграться с этим. Но не увлекайтесь, ведь у нас еще осталась...</p>
+<h3 id="_11">Дверь</h3>
+<p>Создайте на сцене еще один кубик, назовите его Door, разместите его рядом с областью, растяните его немного, чтобы он немного походил на дверь (растягивайте именно кубик, а не его область коллайдера! это делается через инструменты сцены). Когда закончите, выключите компонент Mesh Renderer у области.</p>
+<p>Создаем в папочке <code>Scripts</code> новый скрипт - <code>Door</code>. Избавляемся от всего лишнего и погнали думать.</p>
+<p>В задаче нам нужно открывать дверь. А про закрывать никто не говорил. Ну давайте, все таки сделаем и закрытие тоже.</p>
+<p>У двери есть два состояния: закрыто, открыто. В каждом из состояний меняются ее координаты. Поэтому нужны начальные координаты (состояние закрыто), и конечные координаты (состояние открыто). А теперь еще раз подумаем. Если нам придется перемещать дверь, нам нужно будет снова обновлять координаты. Удобно ли это? Нет конечно.</p>
+<p>За начальные координаты возьмем позицию, когда игра только запустилась. А конечную будем задавать.</p>
+<p>Только добавим одну супер фишку: если мы сделаем нашу дверь дочерним объектом пустого объекта, на котором будет висеть наш скрипт (вспоминаем, что значит дочерний объект), то координаты двери будут относительными. Тогда при сдвиге двери нам вообще ничего менять не надо! Разве не сказка?</p>
+<p>Для этого в иерархии находим нашу дверь и тыкаем по ней ПКМ. В списке выбираем <code>Create Empty Parent</code>. Таким образом у двери появляется объект родитель, который мы назовем <code>DoorPivot</code>(якорь/петля двери). Обратите внимание, как изменились координаты самой двери. Они встали по нулям! (0, 0, 0).</p>
+<p>Едем в скрипт. Заводим переменную состояния <code>isOpen</code> (состояния два - хватит буля), координаты открытия <code>targetPos</code>, и начальные координаты <code>initPos</code>. Координаты - трехмерный вектор <code>Vector3</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isOpen</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">targetPos</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">initPos</span><span class="p">;</span>
+</code></pre></div>
+<p>Делаем публичным только поле <code>targetPos</code> - мы его будем заполнять в инспекторе.</p>
+<p>Теперь позаботимся вот о чем: мы двигаем не якорь двери, а <strong>саму дверь</strong>. То есть нам нужна ссылка на эту дверь. Нам от нее нужно только изменение позиции, поэтому мы получим ее из какого компонента?... правильно, из Transform:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">doorObject</span><span class="p">;</span>
+</code></pre></div>
+<p>Так же оставляем его публичным, мы закинем туда ссылку на дверь.</p>
+<p>Создаем собственный метод - <code>ToggleOpen</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ToggleOpen</span><span class="p">()</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Делаем его публичным, мы к нему будем потом обращаться. А назван он по простому принципу: метод будет закрывать дверь, если она открыта и открывать в обратном случае. То есть переключает состояние. Состояние у нас Open, а глагол, который принято использовать для переключения состояния - Toggle.</p>
+<p>Теперь пишем логику: если дверь открыта (<code>isOpen == true</code>), то выставляем дверь на начальные координаты и выставляем состояние в позицию <code>false</code>. Иначе, выставляем дверь на целевые координаты и выставляем состояние в позицию <code>true</code>. В коде это выглядит так:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ToggleOpen</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isOpen</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">doorObject</span><span class="p">.</span><span class="n">localPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initPos</span><span class="p">;</span>
+<span class="w">        </span><span class="n">isOpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">doorObject</span><span class="p">.</span><span class="n">localPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targetPos</span><span class="p">;</span>
+<span class="w">        </span><span class="n">isOpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>У Transform есть свойство позиции - <code>.localPosition</code>. Оно возвращает координаты, на которых объект находится, относительно родителя. А также мы можем и своими ручками эти координаты поменять на нужные, что мы и делаем здесь.</p>
+<p>Не забываем, что нам нужно выставить еще начальные координаты. Делаем это всего один раз, в методе Start, который вызывается лишь однажды:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">initPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doorObject</span><span class="p">.</span><span class="n">localPosition</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>И все, наш скрипт готов! Выглядит он вот так:</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Door</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isOpen</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">targetPos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">initPos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">doorObject</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">initPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doorObject</span><span class="p">.</span><span class="n">localPosition</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ToggleOpen</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isOpen</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">doorObject</span><span class="p">.</span><span class="n">localPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">initPos</span><span class="p">;</span>
+<span class="w">            </span><span class="n">isOpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">doorObject</span><span class="p">.</span><span class="n">localPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">targetPos</span><span class="p">;</span>
+<span class="w">            </span><span class="n">isOpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Теперь сохраняем и бежим в редактор!</p>
+<h3 id="_12">Белыми нитками шиты</h3>
+<p>Перетаскиваем новоиспеченный скрипт на <code>DoorPivot</code> (не <code>Door</code>!).</p>
+<p><img alt="" src="../attachments/1_2_door_empty.png" /></p>
+<p>Перетаскиваем из иерархии <code>Door</code> в поле <code>Door Object</code>. Теперь нам остается выставить координаты состояния открытия. Выделите саму дверь и подвиньте ее туда, где вам кажется, она будет открыта. Перепишите координаты двери в <code>Target Pos</code> у скрипта и <strong>обязательно верните дверь на нулевые координаты</strong>.</p>
+<p>Прекрасно! Возвращаемся к области. В событии, в поле объекта перетаскиваем <code>DoorPivot</code> (на нем висит скрипт <code>Door</code>). В методах выбираем наш компонент <code>Door</code> и в нем метод <code>ToggleOpen</code>. Заметьте, никакого поля для параметра не появляется - в нашем методе <code>ToggleOpen</code> нет никаких параметров.</p>
+<p><img alt="" src="../attachments/1_2_unityevent_final.png" /></p>
+<p>И все! Бежим проверять! При подходе к двери, она открывается. Если мы пройдем через нее, а потом вернемся, она закроется за нами.</p>
+<h2 id="_13">Заключение</h2>
+<p>Ну что, ребят, страшно было? А ведь мы подошли к решению задачи на высочайшем уровне, при почти нулевых знаниях! За тем исключением, конечно, что у нас куча полей публичные... но это дело поправимое. Во всяком случае мы даже не нарушили ни одного принципа SOLID, что просто нереально!</p>
+<p>Если вы будете подходить к решению задач в таком ключе, вам не только будет проще их решать, но и проще находить помощи в их решении, что не мало важно на вашем уровне. Поэтому дерзайте!</p>
+<h2 id="_14">Задание</h2>
+<p><em>Маленький Олег</em>: "А как же домашнее задание?"</p>
+<p>Ах, да, точно. Спасибо, что напомнил, а то вы бы пошли гулять.</p>
+<p>Задание следующее: после того, как вы получите свое первое задание, проведите Thought process в таком же формате, как указано у меня. Пришлите его мне, и я расскажу, насколько сильно <em>я вас "люблю"</em>. В добавок выпишем <code>n</code>-ое количество ударов табуретом по голове в качестве профилактики. Шучу. Действуем.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

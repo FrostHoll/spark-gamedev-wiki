@@ -1,0 +1,2221 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/FrostHoll/spark-gamedev-wiki/learn/lvl_2/2_1_abstracts_interfaces/">
+      
+      
+        <link rel="prev" href="../OOP_base/">
+      
+      
+        <link rel="next" href="../2_2_coroutines/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2.1 Абстрактные классы и интерфейсы - Spark GameDev Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#21" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-header__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spark GameDev Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.1 Абстрактные классы и интерфейсы
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../team/team_index/" class="md-tabs__link">
+          
+  
+  
+  Наша команда
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../project/project_index/" class="md-tabs__link">
+          
+  
+  
+  Проект
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../rules/rules_index/" class="md-tabs__link">
+          
+  
+  
+  Правила
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/installation/" class="md-tabs__link">
+          
+  
+  
+  Гайды
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../learn_index/" class="md-tabs__link">
+          
+  
+  
+  Материалы для изучения
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-nav__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spark GameDev Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Главная
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Наша команда
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/team_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/meetings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Встречи
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/hall_of_fame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Доска почета
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/spreadsheets/d/10h4VtALQuqD2I97SMZjRGgB_mbOLreOIRDi3-VYRbuI/edit?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Сводка
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Личные дела
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Личные дела
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Hasan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хасан
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexander/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Александр
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Rustem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рустем
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Dinar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Динар
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Vladimir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Владимир
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Алексей
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Adelina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Аделина
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Renata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рената
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Проект
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/project_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/mvp_reqs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    О MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Правила
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/rules_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/lyrical_degression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Лирическое отступление
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Формат
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/terms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Термины и Звания
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ответы на частые вопросы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Гайды
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Гайды
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Установка программ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Кто такой этот ваш Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/strive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Работа со Strive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Материалы для изучения
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Материалы для изучения
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Материалы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            1-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/metanit_csharp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База C# Metanit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/1_1_sort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 Сортировка сериалов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/1_2_unity_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2 Поверхность Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            2-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OOP_base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База ООП
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.1 Абстрактные классы и интерфейсы
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1 Абстрактные классы и интерфейсы
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Для чего они нам нужны?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Абстрактные классы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Интерфейсы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Применение интерфейсов на практике
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Применение интерфейсов на практике">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_2_coroutines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2 Корутины
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_3_patterns_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3 Паттерны проектирования. Часть 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_4_unity_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.4 События в Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    3-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            3-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_3/solid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SOLID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            4-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_4/best_practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хорошие практики
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Для чего они нам нужны?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Абстрактные классы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Интерфейсы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Применение интерфейсов на практике
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Применение интерфейсов на практике">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="21">2.1 Абстрактные классы и интерфейсы</h1>
+<p>Сегодня мы с вами поговорим о чем-то эфемерном, почти неощущаемом, но так сильно необходимом. О абстрактных классах и интерфейсах.</p>
+<h2 id="_1">Для чего они нам нужны?</h2>
+<p>Давайте сначала вспомним, что у нас есть классы и инструмент наследования. В классе мы описываем поля, методы. Описываем его поведение и все просто замечательно у нас.</p>
+<p>Но давайте, на секунду представим, как у нас выглядит <code>животное</code>? А какие звуки издает животное? А как у нас атакует <code>враг</code>? Стреляет, бьет? Если бьет, то мечом или булавой?</p>
+<p>Заметьте, вы вполне могли сейчас ответить, что кот - мяукает. И кот - животное. Все логично, но... собака - тоже животное. И собаки очень редко мяукают. Так какие звуки издает <code>животное</code>? Правильным ответом на этот вопрос будет - <strong>никакие</strong>. Животное - концепция, концепция не может издавать какие-либо звуки. Дайте себе минутку, чтобы это переварить.</p>
+<p>Переварили? Отлично, приблизимся к нашим баранам. Как в нашей игре атакует <code>враг</code>? Если вы уловили мысль выше, скорее всего вы ответите - никак. Врагом может быть все что угодно: зомби, лучники, сундуки-мимики. В зависимости от того, <strong>какой</strong> это враг, он по-разному атакует. Но самое главное - <strong>все враги умеют атаковать</strong>. Чувствуете? Уже за километр несет ООП.</p>
+<p>Чтобы получить ответ на вопрос "зачем нам нужны абстрактные классы", давайте проведем небольшой итог:</p>
+<p><strong>Враг</strong> сам по себе слишком эфемерная сущность. Непонятно <strong>как</strong> он выглядит, и <strong>как</strong> он работает. Но при этом, мы знаем, что <strong>у всех врагов есть какое-то значение здоровья, урона</strong>, и что <strong>все враги умеют атаковать</strong>. Причем <strong>атакуют каждый по-разному</strong>.</p>
+<p>Давайте попробуем сразу сделать класс врага.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">health</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Attack</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Вот такой класс получается. Значения здоровья и урона будут отличаться от врага к врагу. А метод атаки мы оставляем пустым, ведь все следующие враги будут сами определять <strong>как именно</strong>. Оставляем у этого метода ключевое слово <code>virtual</code>, чтобы все следующие враги могли переопределять атаку.</p>
+<p>Итак, делаем, к примеру, слизня:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Slime</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Enemy</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Slime</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">health</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">        </span><span class="n">damage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Attack</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// прыгаем на игрока и наносим damage урона</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Слизень у нас враг, верно? Поэтому наследуемся от него. Задаем в конструкторе значения здоровья и урона, которые ему подходят. А в методе атаки прыгаем на игрока и наносим ему урон. Пока все выглядит замечательно, да?</p>
+<p>Давайте покажу, где все ломается:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Enemy</span><span class="w"> </span><span class="n">enemy1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Enemy</span><span class="p">();</span>
+<span class="n">enemy1</span><span class="p">.</span><span class="n">Attack</span><span class="p">();</span>
+</code></pre></div>
+<p>Кроме очевидной проблемы, что мы не знаем, какую модельку ему накинуть, он еще и атаковать не может: метод Attack у нас в Enemy пустой. Если бы мы все же решили сделать какой-то шаблонный способ атаки в нем, сколько он урона нанесет? Даже если мы ему зададим какое-то значение урона, то как наносить по нему урон? Ведь у него нет здоровья. И так далее и тому подобное. При попытке его использовать, нам приходится придумывать конкретику, что вообще-то различается с нашими идеями.</p>
+<h2 id="_2">Абстрактные классы</h2>
+<p>Для таких случаев и были придуманы <strong>абстрактные классы</strong>. Они обозначают абстрактную концепцию класса, которую реализуют потомки.</p>
+<p>В нашем случае именно враг довольно абстрактный, не правда ли?</p>
+<p>Давайте пробежимся по различиям от обычного класса:</p>
+<ul>
+<li>Нельзя создать объект абстрактного класса. В нашем случае, мы не можем пользоваться врагом - черт его знает, что это такое.</li>
+<li>Можно оставлять методы не реализованными - то есть абстрактными. Это заставит его потомков их обязательно реализовать. В нашем случае - абстрактный метод это <code>Attack</code>, а наш слизень <strong>должен</strong> описать, как он будет атаковать.</li>
+</ul>
+<p>Давайте переделаем нашего <code>Enemy</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">health</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Attack</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Добавились ключевые слова <code>abstract</code> перед самим классом и методом <code>Attack</code>. А фигурные скобки убраны - у нас нет способа атаки по умолчанию.</p>
+<p>При этом класс слизня <code>Slime</code> нам менять не пришлось. Ведь необходимый теперь для реализации метод Attack мы уже переопределили.</p>
+<p>Но поменялось кое-что важное:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Enemy</span><span class="w"> </span><span class="n">enemy1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Enemy</span><span class="p">();</span><span class="w"> </span><span class="c1">// ошибка - нельзя создать экземпляр Enemy</span>
+<span class="n">enemy1</span><span class="p">.</span><span class="n">Attack</span><span class="p">();</span>
+</code></pre></div>
+<p>Теперь мы не можем создавать объект врага. И правильно! Мы ведь понятия не имеем кто это. Но у нас ведь слизень, верно? Давайте покажу один прикол:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Enemy</span><span class="w"> </span><span class="n">slime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Slime</span><span class="p">();</span>
+<span class="n">slime</span><span class="p">.</span><span class="n">Attack</span><span class="p">();</span>
+</code></pre></div>
+<p>Заметили? Я создаю слизня, и помещаю его в переменную типа врага! И работаю с ним как с врагом! И при вызове <code>Attack()</code> у нас будет работать код именно из слизня! То есть он будет прыгать на игрока и наносить 2 урона, хотя он и представлен здесь как абстрактный враг.</p>
+<p>Так вот, абстрактный класс Enemy - задает <code>контракт взаимодействия</code> для всех врагов, которых мы напишем далее. Контракт здесь - сделка, уговор между всеми врагами, что они будут иметь здоровье и урон, и должны уметь атаковать. И они никуда не денутся от этого.</p>
+<p>Если мы сделаем еще лучника, то он тоже враг - у него тоже будет здоровье и урон, а в качестве атаки он будет стрелять в игрока.</p>
+<p>При этом, мы можем работать что со слизнем, что с лучником как с врагом. Ведь у них точно есть здоровье и урон, и они могут атаковать, просто каждый делает это по-своему.</p>
+<p>Вообще вот этот прикол, что слизня можно представить как врага, понять сразу трудно. И если вы немного не включились, я прекрасно понимаю, и это нормально. Скорее было бы странно, если вы бы поняли все сразу. Дайте себе время это осознать, а еще лучше потыкаться на практике. Но, по крайней мере, что такое абстрактный класс и зачем он нужен, вы должны были уловить.</p>
+<h2 id="_3">Интерфейсы</h2>
+<p>Сразу оговорюсь - интерфейсы это не ваши менюшки, показатели здоровья, инвентарь и так далее. Но вот название у них общее не просто так.</p>
+<p>Интерфейсы очень схожи с абстрактными классами. Однако, если вы скажете, что это одно и то же, вас выпрут с собеседования быстрее, чем вы успеете моргнуть.</p>
+<p>Давайте взглянем на пример такого:</p>
+<div class="highlight"><pre><span></span><code><span class="k">interface</span><span class="w"> </span><span class="n">IBuffable</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyBuff</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">addHP</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">addDmg</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Заметьте - интерфейсы это даже не класс. У него нет ключевого слова <code>class</code>. Это уже дает нам понять, что его экземпляр создать не получится.</p>
+<p>Давайте разберем, что вообще написано. Интерфейс называется <code>IBuffable</code>. Интерфейсы служат для описания функционала. В нашем случае - наложения эффекта в виде увеличения здоровья и урона. Каждый интерфейс обычно можно выразить в виде одного-двух слов. Каких? Классы, которые реализуют данный интерфейс - <strong>можно баффать</strong>. Это и переводится как <code>Buffable</code>. Все названия интерфейсов всегда начинаются с заглавной <code>I</code>. Так принято, и так проще разделять класс от интерфейсов.</p>
+<p>В качестве примера, если интерфейс описывает функционал передвижения, то называться он будет <code>IMovable</code>. Ну вы поняли идею.</p>
+<p>Давайте рассмотрим применение. Баффать можно не только слизня, но и всех врагов, верно? Поэтому его будет реализовывать <code>Enemy</code>. А так как <code>Slime</code> наследуется от <code>Enemy</code>, то и он автоматически его реализует.</p>
+<div class="highlight"><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IBuffable</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">health</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyBuff</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">addHP</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">addDmg</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">health</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">addHP</span><span class="p">;</span>
+<span class="w">        </span><span class="n">damage</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">addDmg</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Attack</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Если вдруг у нас будет иногда будет меняться реализация баффа у врагов, можем в реализации <code>ApplyBuff</code> поставить ключевое слово <code>virtual</code>. А если бы каждый враг по-своему реализовывал наложение баффов, то мы могли бы оставить реализацию абстрактной, чтобы заставить всех врагов определять этот функционал:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyBuff</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">addHP</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">addDmg</span><span class="p">);</span>
+</code></pre></div>
+<p>Теперь, когда у нас враги реализуют наш интерфейс, мы можем им воспользоваться из другого класса. Например, в классе какого-нибудь предмета:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ShieldItem</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Use</span><span class="p">(</span><span class="n">IBuffable</span><span class="w"> </span><span class="n">buffable</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">buffable</span><span class="p">.</span><span class="n">ApplyBuff</span><span class="p">(</span><span class="n">addHP</span><span class="p">:</span><span class="w"> </span><span class="mf">100f</span><span class="p">,</span><span class="w"> </span><span class="n">addDmg</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">5f</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Заметьте, бафф дается <strong>сущности, которую можно баффать</strong>, а не конкретному врагу, или врагам в целом. Это и есть <strong>прямое</strong> назначение интерфейсов. Теперь, если наш игрок тоже реализует интерфейс <code>IBuffable</code>, то этот предмет будет работать и на врагов и на игрока, причем код самого предмета мы не меняли. Разве не магия?</p>
+<p>Давайте определимся с тем, зачем нам нужны интерфейсы:</p>
+<ul>
+<li>Каждый класс может наследоваться только от одного класса, а вот реализовывать интерфейсов - сколько угодно.</li>
+<li>Интерфейсы предоставляют контракт взаимодействия, так же как и абстрактные классы. Однако в отличие от абстрактных классов, которые отвечают за концепцию класса, интерфейсы определяют точки взаимодействия с классом. То есть методы и свойства, к которым мы можем обратиться.</li>
+</ul>
+<h2 id="_4">Применение интерфейсов на практике</h2>
+<p>Если то, как применять абстрактные классы, можно еще можно уловить, то на кой хрен нам сдались интерфейсы?</p>
+<h3 id="1">Пример 1</h3>
+<p>Итак, вспоминаем наше тестирование. Конкретно 4-ое задание секции C. Давайте напомню условие:</p>
+<blockquote>
+<p>Вы работаете над проектом, в котором будет много объектов, с которыми можно взаимодействовать. У каждого такого объекта будет название, и описание того, что с ним можно сделать. Типы таких объектов: </p>
+<p><strong>Дверь</strong>;</p>
+<p><strong>Дверь с замком</strong>;</p>
+<p><strong>Сундук с предметами</strong>;</p>
+<p><strong>Закрытый сундук с предметами</strong>;</p>
+<p><strong>Предмет, который можно осмотреть</strong>;</p>
+<p><strong>Предмет, который можно осмотреть и поднять</strong>;</p>
+<p>Опишите иерархию классов для этой системы.</p>
+</blockquote>
+<p>С ними всеми можно взаимодействовать, поэтому берем общий класс для таких объектов. Пусть будет <code>Interactable</code>. Причем, как происходит взаимодействие с Interactable - неясно. Это наводит нас на абстрактный класс:</p>
+<div class="highlight"><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Interactable</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Interact</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Классы с предметами я пропущу. Давайте взглянем на кое-что интересное: двери и сундуки.</p>
+<div class="admonition note">
+<p class="admonition-title">Важно</p>
+<p>Далее классы <code>Item</code> и <code>Key</code> - пустые, и они вынесены за рамки показанного кода. Мы никак с ними напрямую не взаимодействуем, они просто для наглядности. Не пугаемся, в них ничего важного нет. Совсем ничего нет.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Door</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Interactable</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Interact</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// открыть/закрыть</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Chest</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Interactable</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Interact</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// открываем сундук, в котором лежат предметы items</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Как видите, в них ничего сложного нет. Но давайте вот что подумаем: у нас и дверь и сундук могут быть закрытыми. Да, мы можем ввести для них состояние открыто или нет:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isOpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+</code></pre></div>
+<p>И прописать метод открытия (использование ключа):</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="n">rightKey</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Open</span><span class="p">(</span><span class="n">Key</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rightKey</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">isOpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Но вот только эти строчки нам нужно прописать и в двери и в сундуке. Вообще, когда у вас возникает необходимость в разных классах писать одни и те же строчки, это <strong>должно</strong> наводить на вас страх: <strong>вы уже делаете что-то не так</strong>.</p>
+<p>И вы, скорее всего, уже догадываетесь, что мы здесь применим. Да, легко сказать, что мы тут используем, учитывая, что мы разбираем интерфейсы. Но давайте я расскажу, как мы пришли бы к этому своим ходом:</p>
+<p>У нас есть повторение функционала: открытие закрытых дверей и сундуков. Повторение именно функционала, ведь за понятием <strong>закрываемости</strong> вообще может быть все что угодно. Это не концепция, а функционал. Это и есть подводки к интерфейсу.</p>
+<p>Итак, давайте же уже пропишем наш интерфейс <code>ICloseable</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">interface</span><span class="w"> </span><span class="n">ICloseable</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsOpen</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="n">RightKey</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Open</span><span class="p">(</span><span class="n">Key</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IsOpen</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RightKey</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">IsOpen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Важное замечание - в интерфейсах мы не можем прописывать поля. Помним? Мы пишем функционал, а не часть состояния класса (за состояние считаются поля класса). Поэтому мы описываем свойства. За дополнительными пояснениями что такое свойства, бежим <a href="https://metanit.com/sharp/tutorial/3.4.php">сюда</a>.</p>
+<p>Кстати, да. Обратите внимание, что в интерфейсе мы реализуем метод <code>Open</code>. Так нельзя было делать в древние времена C#. Сейчас уже так можно. И мы этим пользуемся прямо сейчас.</p>
+<p>И теперь реализуем интерфейс на примере сундука:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Chest</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Interactable</span><span class="p">,</span><span class="w"> </span><span class="n">ICloseable</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsOpen</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="n">RightKey</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Key</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Interact</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsOpen</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// открываем сундук, в котором лежат предметы items</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Как видите, при реализации интерфейса ничего толком не поменялось: добавились только два <a href="https://metanit.com/sharp/tutorial/3.4.php">авто-свойства</a> <code>IsOpen</code> и <code>RightKey</code>, которые мы уже можем задать для каждого сундука отдельно. (ну еще добавилась проверка, что предметы мы не показываем, пока сундук не открыт ключом)</p>
+<p>То, что мы выделили функционал закрываемости не только позволяет нам не повторять код (и упрощает его изменение - все лежит в одном месте), но и позволяет прикрутить этот функционал вообще к чему угодно - хоть к машине.</p>
+<p>На досуге можете себе представить, как вы бы сделали это все без использования интерфейсов. Только не костыльно, а через выделение еще одного абстрактного класса - <code>CloseableInteractable</code> например. Там бы пришлось делать еще парочку оборотов вокруг своей оси, чтобы заставить это все завестись, а тут мы запросто все сделали.</p>
+<p>Итого, если бы вы представили подобный ответ на тесте - получили бы 12/10. Это уже высший пилотаж. И теперь вы знаете, как это делается!</p>
+<h3 id="2">Пример 2</h3>
+<p>Как ответить правильно в тесте это, безусловно, прикольно, но тест уже давно позади. Давайте ближе к тем баранам, с которыми вы будете работать.</p>
+<p>Представим ситуацию. Даша и Ваня работают над двумя задачами параллельно: Даше нужно прописать хар-ки персонажа, а Ване сделать баффы. Давайте посмотрим, что Даша и Ваня успели накалякать:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PlayerModel</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">baseHP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">baseATK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">HP</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">get</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">baseHP</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ATK</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">get</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">baseATK</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Это код Даши. Тут все просто - базовые значения здоровья и урона, и мы определяем свойства для их публичного чтения.</p>
+<div class="admonition note">
+<p class="admonition-title">Почему класс характеристик персонажа называется PlayerModel?</p>
+<p>Отличный вопрос. Это часть паттерна MVC, про который у вас были вопросы в тесте. (Бу! Страшно?) Похоже, придется найти в команде того бедняжку, который будет рассказывать всей команде, что такое MVC с точки зрения геймдева. И у меня даже есть кое-кто на уме...</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Amplifiers</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hpAmplifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">atkAmplifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddHPAmplifier</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">hpAmplifiers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddATKAmplifier</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">atkAmplifiers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetFinalHP</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">baseHP</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">finalHP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baseHP</span><span class="p">;</span>
+<span class="w">        </span><span class="n">hpAmplifiers</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">amp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">finalHP</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amp</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">finalHP</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetFinalATK</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">baseATK</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">finalATK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baseATK</span><span class="p">;</span>
+<span class="w">        </span><span class="n">atkAmplifiers</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">amp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">finalATK</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amp</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">finalATK</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Эта дрянь уже рук Вани. У него два списка со значениями усилителей - значений, которые просто добавляются к базовым здоровью и урону соответственно. Так же Ваня заботливо оставил методы <code>GetFinal...</code>, чтобы не в ручную считать конечные здоровье и урон.</p>
+<p>Нам вообще не это важно. Суть в том, что Даше нужно пользоваться классом Вани - ее свойства <code>HP</code> и <code>ATK</code> должны возвращать <strong>конечные</strong> значения здоровья и урона, а не базовые. Но есть проблема: работают они параллельно, и Ваня еще не закончил. А Даше же не хочется ждать, пока Ваня допьет свою 35231 кружку кофе и достругает уже свою задачку! Да и ей не хочется получать табуретом по башке от ментора, за то, что она задерживает задачу... Пусть он займется Ваней, верно? Отлично! Идем жаловаться ментору, что Ваня задерживается, а мы из-за этого не можем продолжить...</p>
+<p>Стоп! Всего этого можно было бы избежать, если бы использовали <strong>интерфейсы</strong>. Давайте покажу как.</p>
+<p>Итак. Отматываем время назад до написания всей этой дребедени. Договариваемся с Ваней, как можно будет получить из его кода конечные значения характеристик. Если мы взглянем на код, то увидим уже готовые методы:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">GetFinalHP</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">baseHP</span><span class="p">)</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetFinalATK</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">baseATK</span><span class="p">)</span>
+</code></pre></div>
+<p>И... выносим это в интерфейс:</p>
+<div class="highlight"><pre><span></span><code><span class="k">interface</span><span class="w"> </span><span class="n">IStatsFinalizer</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetFinalHP</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">baseHP</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetFinalATK</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">baseATK</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Теперь Даша будет пользоваться этим интерфейсом, а не кодом Вани. А Ваню заставляем реализовать этот интерфейс.</p>
+<p>Код Даши изменится следующим образом:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PlayerModel</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">baseHP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">baseATK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">IStatsFinalizer</span><span class="w"> </span><span class="n">statsFinalizer</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">HP</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">get</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">statsFinalizer</span><span class="p">.</span><span class="n">GetFinalHP</span><span class="p">(</span><span class="n">baseHP</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ATK</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">get</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">statsFinalizer</span><span class="p">.</span><span class="n">GetFinalATK</span><span class="p">(</span><span class="n">baseATK</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>А у Вани поменялась только первая строчка класса:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Amplifiers</span><span class="p">:</span><span class="w"> </span><span class="n">IStatsFinalizer</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// тот же самый код</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Когда оба закончат свою работу, в ссылку к Даше можно будет спокойно передать класс Вани <code>Amplifiers</code>, ведь он реализует необходимый интерфейс <code>IStatsFinalizer</code>.</p>
+<p>Итого что получается? Когда вы будете решать свои задачки, и ваши классы каким-либо образом будут соприкасаться с чужими, то договоритесь, как будет происходить взаимодействие и выделите это в интерфейс.</p>
+<p>Такой подход вам даст:</p>
+<ul>
+<li>Четко видеть входные и выходные данные вашего и чужого класса;</li>
+<li>Позволяет пользоваться методами и свойствами классов, которые даже еще не написаны;</li>
+<li>Защититесь от случая, когда код, который вы используете, вдруг поменяется. У вас все еще будет интерфейс, который не меняется, а другого заставит следовать описанным договоренностям.</li>
+</ul>
+<p>Если вы будете пользоваться этим, то помните кое-что важное: интерфейс для вашего класса должен появиться <strong>раньше</strong> вашего класса. Чтобы другие видели то, над чем вы работаете, и уже могли пользоваться вашими первичными наработками. Не будьте Ваней.</p>
+<h2 id="_5">Задание</h2>
+<p>На этот раз задание продолжает задание из <a href="../../lvl_1/1_2_unity_start/">Старта по Unity</a>. После того, как вы описали примерную работу, которую вам нужно проделать, попробуйте сначала описать интерфейс для ваших скриптов. На крайний случай напишите его после. Предоставьте мне все это вместе, и я скажу насколько % вы молодцы.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

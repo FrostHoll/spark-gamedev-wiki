@@ -1,0 +1,2292 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/FrostHoll/spark-gamedev-wiki/learn/lvl_2/2_2_coroutines/">
+      
+      
+        <link rel="prev" href="../2_1_abstracts_interfaces/">
+      
+      
+        <link rel="next" href="../2_3_patterns_basics/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2.2 Корутины - Spark GameDev Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#22" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-header__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spark GameDev Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.2 Корутины
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../team/team_index/" class="md-tabs__link">
+          
+  
+  
+  Наша команда
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../project/project_index/" class="md-tabs__link">
+          
+  
+  
+  Проект
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../rules/rules_index/" class="md-tabs__link">
+          
+  
+  
+  Правила
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/installation/" class="md-tabs__link">
+          
+  
+  
+  Гайды
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../learn_index/" class="md-tabs__link">
+          
+  
+  
+  Материалы для изучения
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-nav__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spark GameDev Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Главная
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Наша команда
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/team_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/meetings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Встречи
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/hall_of_fame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Доска почета
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/spreadsheets/d/10h4VtALQuqD2I97SMZjRGgB_mbOLreOIRDi3-VYRbuI/edit?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Сводка
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Личные дела
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Личные дела
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Hasan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хасан
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexander/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Александр
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Rustem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рустем
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Dinar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Динар
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Vladimir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Владимир
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Алексей
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Adelina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Аделина
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Renata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рената
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Проект
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/project_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/mvp_reqs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    О MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Правила
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/rules_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/lyrical_degression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Лирическое отступление
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Формат
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/terms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Термины и Звания
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ответы на частые вопросы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Гайды
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Гайды
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Установка программ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Кто такой этот ваш Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/strive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Работа со Strive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Материалы для изучения
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Материалы для изучения
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Материалы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            1-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/metanit_csharp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База C# Metanit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/1_1_sort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 Сортировка сериалов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/1_2_unity_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2 Поверхность Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            2-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OOP_base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База ООП
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_1_abstracts_interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1 Абстрактные классы и интерфейсы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.2 Корутины
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2 Корутины
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Введение
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что такое Корутины
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Что такое Корутины">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример работы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ienumerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Почему IEnumerator?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Применяем корутины
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Применяем корутины">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Переделываем пассивный доход
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Переделываем автоклики
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Продвинутое применение корутин
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Итог
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_3_patterns_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3 Паттерны проектирования. Часть 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_4_unity_events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.4 События в Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    3-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            3-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_3/solid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SOLID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            4-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_4/best_practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хорошие практики
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Введение
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что такое Корутины
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Что такое Корутины">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пример работы
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ienumerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Почему IEnumerator?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Применяем корутины
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Применяем корутины">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Переделываем пассивный доход
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Переделываем автоклики
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Продвинутое применение корутин
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Итог
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="22">2.2 Корутины</h1>
+<p>Сегодня поговорим о корутинах (Coroutines) в Unity. Это очень интересная тема, с виду простая, но на практике ими мало кто пользуется, а если пользуются, то не совсем понимают зачем.</p>
+<h2 id="_1">Введение</h2>
+<p>Представим, что у мы делаем простенький кликер. Кликер про уборку мусора: на каждом уровне появляется мусор, по которому мы кликаем, зарабатываем этим монетки.</p>
+<p>И жанр кликеров бы умер в зародыше, если бы не было дополнительных механик. Например, мы хотим сделать так, что за монетки можно купить улучшение, которое дает пассивную прибавку монеток, и улучшение, которое раз в несколько секунд само убирает мусор вместе с игроком.</p>
+<p>Если что, это пример моего реального проекта, который я сделал буквально за два дня, и его полный код можно найти <a href="https://github.com/FrostHoll/CleaningClicker">здесь</a>.</p>
+<p>Давайте взглянем на то, с чем мы будем работать, а конкретно класс игрока:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Player</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//...</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">_money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Money</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Money</span><span class="w"> </span><span class="n">Money</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">get</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">_money</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">set</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span>
+<span class="w">            </span><span class="n">MoneyChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">_money</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTrashClicked</span><span class="p">(</span><span class="n">GameObject</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_playerUpgrades</span><span class="p">.</span><span class="n">GetMoneyPerClick</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">//...</span>
+<span class="w">        </span><span class="n">Money</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//...</span>
+</code></pre></div>
+<p>Давайте сразу подмечу, что у нас тут есть:</p>
+<ul>
+<li>Закрытое поле <code>_money</code>, которое обозначает текущее количество монеток у игрока. Тип <code>Money</code> это мной написанный класс, который реализует деньги, с уходом в очень большие числа. Я показывать его не буду, ибо сейчас нам это не интересно.</li>
+<li>Свойство <code>Money</code>, которое оборачивает поле <code>_money</code>, и при изменении количества денег (блок <code>set</code>) сообщает всем, что деньги поменялись (этим пользуются текст с количеством денег и кнопки улучшений).</li>
+<li>Метод <code>OnTrashClicked</code>, который вызывается, когда по мусору кликнули. Он получает из текущих улучшений количество денег за клик, и затем начисляет его на счет.</li>
+</ul>
+<p>Как видите, ничего интересного. Поэтому давайте думать, как реализовать наши новые механики.</p>
+<p>Сначала пассивный доход. Наш апгрейд звучит так:</p>
+<div class="admonition note">
+<p class="admonition-title">Пример пассивного дохода</p>
+<p>Рабочие - Каждые 3 секунды на счет прибавляется 120 монеток. С каждым уровнем прибавляется количество дохода.</p>
+</div>
+<p>Естественно, первое что придет нам на ум, это сделать таймер на три секунды, и начислять нужную сумму на счет. Давайте сделаем это:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">currentWorkersTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w"> </span><span class="c1">// таймер</span>
+
+<span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">workersTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3f</span><span class="p">;</span><span class="w"> </span><span class="c1">// время таймера</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HasWorkers</span><span class="p">)</span><span class="w"> </span><span class="c1">// проверяем есть ли такой апгрейд</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">currentWorkersTimer</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="c1">// пора ли начислять</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Money</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">120</span><span class="p">;</span>
+<span class="w">            </span><span class="n">currentWorkersTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">workersTime</span><span class="p">;</span><span class="w"> </span><span class="c1">// сброс таймера</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">currentWorkersTimer</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w"> </span><span class="c1">// уменьшаем таймер</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Вроде все просто. Но только давайте вот что подумаем, а если прибавится таких таймеров? Например еще один апгрейд на каждые 5 секунд? А еще на каждую одну секунду? Сколько строчек у нас будет занимать <strong>Update</strong>, и как скоро мы в нем начнем теряться?</p>
+<p>Теперь второй апгрейд:</p>
+<div class="admonition note">
+<p class="admonition-title">Пример автокликера</p>
+<p>Помощники - Каждые 8 секунд совершают <code>n</code> кликов по случайному мусору на экране. С каждым уровнем увеличивается кол-во кликов. Каждый автоклик должен быть визуально заметен.</p>
+</div>
+<p>Итак, сразу видно "каждые 8 секунд" - значит снова таймер (еще один!). Причем каждый клик должен быть визуально заметен...</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">currentHelpersTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">helpersTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8f</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HasHelpers</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">currentHelpersTimer</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// ???</span>
+<span class="w">            </span><span class="n">currentHelpersTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">helpersTime</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">currentHelpersTimer</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Делаем по аналогии с прошлым, но что мы должны делать при срабатывании таймера? Если мы просто сделаем цикл, в котором будем вызывать метод <code>OnTrashClicked()</code>, то это не будет визуально заметно - все произойдет в одном кадре, и это больше выглядеть как баг, а не фича...</p>
+<p>Значит нам нужно делать клики с небольшим перерывом. То есть завести поле под таймер между кликами, поле на время между кликами, поле сколько кликов нужно сделать, поле сколько кликов уже сделано...</p>
+<p>Не знаю как вы, но меня уже тянет блевать только от мысли писать <strong>такой</strong> код. Если вы все же хотите написать такой код, то пишите... А потом разочаруйтесь в жизни...</p>
+<p>Короче, все эти проблемы прекрасно решат корутины. Давайте с ними познакомимся.</p>
+<h2 id="_2">Что такое Корутины</h2>
+<p><strong>Корутины (Coroutines)</strong> - специальные функции Unity, которая может приостанавливать свое выполнение и возобновлять его позже, не блокируя основной поток игры.</p>
+<p>Описываются они примерно таким образом:</p>
+<div class="highlight"><pre><span></span><code><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">MyCoroutine</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// код</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">...;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Отличительной чертой корутин является возвращаемый тип <code>IEnumerator</code> и использование <code>yield return</code> в теле метода.</p>
+<p>Через <code>yield return ...</code> мы задаем, когда стоит вернутся к выполнению этой корутины (это называется <strong>передачей управления</strong>). Если не задавать его, то это будет самый обычный метод. Можно задать, например: <code>new WaitForEndOfFrame()</code> - дождаться следующего кадра, <code>new WaitForSeconds(s)</code> - выждать <code>s</code> секунд и другие.</p>
+<p>А вот про <code>IEnumerator</code> будет чуть ниже.</p>
+<p>Корутины вызываются/останавливаются следующим образом:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">coroutine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">MyCoroutine</span><span class="p">());</span>
+<span class="n">StopCoroutine</span><span class="p">(</span><span class="n">coroutine</span><span class="p">);</span>
+<span class="n">StopAllCoroutines</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="_3">Пример работы</h3>
+<p>Рассмотрим, как себя будет вести вот такая корутина:</p>
+<div class="highlight"><pre><span></span><code><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">TimedHello</span><span class="p">());</span>
+
+<span class="n">IEnumerator</span><span class="w"> </span><span class="nf">TimedHello</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="mf">5f</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;-- (1)</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;world!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>После запуска корутины, она сразу выведет в консоль <code>"Hello,"</code>. На строчке <strong>(1)</strong> корутина "уйдет на покой", и будет ждать 5 секунд. Через 5 секунд выполнение продолжится с той строчки, где она была остановлена в прошлый раз, то есть со строчки <strong>(1)</strong>. Поэтому далее она выведет <code>"world!"</code> и на этом завершит свою работу.</p>
+<p>Важно подметить две вещи:</p>
+<ol>
+<li>Можно запускать сколько угодно одинаковых корутин, и они будут работать отдельно друг от друга. На нашем примере, если бы мы запустили сразу 10 таких корутин, то сначала бы вывелось 10 "Hello", а потом через 5 секунд еще 10 "world!". Они не зависят друг от друга, и если бы мы их запускали с задержками, их выводы бы тоже сместились.</li>
+<li>Корутины работают асинхронно, а не параллельно. Это означает, что корутины работают в пределах основного потока игры, и если в ней будет бесконечный цикл без передачи управления, игра намертво зависнет. Подробнее про это в следующем разделе.</li>
+</ol>
+<h3 id="ienumerator">Почему IEnumerator?</h3>
+<p>Корутины должны возвращать объект типа <code>IEnumerator</code>. Почему?</p>
+<p>Вообще <code>IEnumerator</code> - интерфейс, который реализуют итераторы коллекций. Звучит страшно, но вот простыми словами:</p>
+<p>Коллекция - любой объект, который содержит в себе другие объекты (например списки, массивы, стэки и т.д.)</p>
+<p>Итератор - объект, который помогает итерироваться по коллекции. То есть штучка, которая знает на какой объект, например в списке, мы сейчас смотрим, и какой следующий.</p>
+<p><strong>Почему это применимо к корутине?</strong></p>
+<p>Любая игра у нас работает покадрово. То есть на каждом кадре происходит отрисовка графики, и другой функционал.</p>
+<p>Мысленно любой кадр можно разбить на таймлайн:</p>
+<p><img alt="" src="../attachments/2_2_frame_empty.png" /></p>
+<p>Где, например, кроме графики, обязательно происходят вызовы Update у каждого объекта. И другие вещи. Это все подзадачи, которые выполняются каждый кадр.</p>
+<p>Все эти подзадачи собирает в одну коллекцию <strong>планировщик</strong>, и начинает по ней проходить, одна за одной отрисовывая кадр. Эта коллекция и есть основной поток игры.</p>
+<p>И уже тут, думаю, становится понятно, что если в одном из <code>Update</code> сделать бесконечный цикл <code>while</code>, то игра намертво зависнет - этот цикл будет работать бесконечно, а все остальные задачи не будут выполняться, ибо они ждут, пока завершится этот Update.</p>
+<p>Так вот, когда мы запускаем корутину, она становится частью основного потока, и точно так же попадает на таймлайн:</p>
+<p><img alt="" src="../attachments/2_2_frame_coroutine.png" /></p>
+<p>А внутри происходит самое интересное. Давайте я еще раз покажу код корутины, чтобы не листать:</p>
+<div class="highlight"><pre><span></span><code><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">TimedHello</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="mf">5f</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;-- (1)</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;world!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Компилятор превращает каждый вызов <code>yield return</code> в отдельное состояние, в котором корутина может находиться. Здесь получается два состояния: <strong>до строчки (1)</strong> и <strong>после строчки (1)</strong>. Они становятся <strong>этапами</strong> выполнения корутины, аналогично элементам массива. Они и возвращаются из корутины при каждом вызове <code>yield return</code>.</p>
+<p>На каждом кадре Unity проверяет, стоит ли перейти к следующему этапу выполнения. На примере здесь - он просматривает внутренний таймер, который создается посредством <code>WaitForSeconds()</code>, и если нужное время прошло, можно переходить дальше.</p>
+<p>На простом примере то понятно, как это работает, но в сложных примерах работает точно так же. Если бы мы засунули передачу управления в цикл, там бы происходило то же самое, с сохранением всех индексов и так далее.</p>
+<p>О корутинах проще думать как о отдельных программах, к которым мы возвращаемся время от времени, что-то делаем, а потом оставляем.</p>
+<h2 id="_4">Применяем корутины</h2>
+<h3 id="_5">Переделываем пассивный доход</h3>
+<p>А теперь давайте переделаем сначала пассивный доход, используя корутины:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">PassivePerSecond</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">seconds</span><span class="p">,</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetDisplay</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// приостанавливаемся на seconds секунд</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="n">seconds</span><span class="p">);</span><span class="w"> </span>
+
+<span class="w">        </span><span class="c1">// берем текущий доход в seconds секунд</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">money</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_playerUpgrades</span><span class="p">.</span><span class="n">GetMoneyPerSecond</span><span class="p">(</span><span class="n">seconds</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">money</span><span class="p">.</span><span class="n">IsZero</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Money</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">money</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// ..</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Эта корутина рассчитана на любое количество секунд: она будет приостанавливаться и выжидать <code>seconds</code> секунд, выполнять код (в данном случае выдавать доход), а затем снова "засыпать" на <code>seconds</code> секунд. И это происходит бесконечно (<code>while (true)</code>). Но из-за того, что мы передаем управление в <code>yield return</code>, выполняется и другой код, а игра не зависает. Просто эта корутина бесконечно висит на фоне и раз в <code>seconds</code> секунд дает доход, если он есть.</p>
+<p>А вызывается она очень просто, в <code>Awake</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Awake</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">PassivePerSecond</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">GameController</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">WorkersDisplay</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_6">Переделываем автоклики</h3>
+<p>Я немного разделил это надвое: все таки логика таймера и логика несколько идущих подряд автокликов не очень связаны.</p>
+<p>Поэтому корутина на автоклики выглядит следующим образом:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">HelpersCoroutine</span><span class="p">(</span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetDisplay</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// приостанавливаемся на 8 секунд</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// получаем кол-во автокликов</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_playerUpgrades</span><span class="p">.</span><span class="n">GetHelpers</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">GameController</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">AttackRandomTargets</span><span class="p">(</span><span class="n">count</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;-- (1)</span>
+<span class="w">            </span><span class="c1">//...</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Здесь тоже <code>while(true)</code>, приостановка на 8 секунд. Однако на строчке <strong>(1)</strong> происходит вызов вот этого:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AttackRandomTargets</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">times</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_currentBG</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">        </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">_currentBG</span><span class="p">.</span><span class="n">AttackRandomTargets</span><span class="p">(</span><span class="n">times</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Вы только посмотрите! Старт еще одной корутины! Да ну нахер! Давайте взглянем на нее:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">AttackRandomTargets</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">times</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">times</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// если нам еще нужно сделать автоклик</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// приостанавливаемся на 0.1 секунду</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="mf">0.1f</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_currentTrash</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">_currentTrash</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_currentTrash</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="n">_currentTrash</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">Attack</span><span class="p">();</span><span class="w"> </span><span class="c1">// &lt;-- автоклик</span>
+<span class="w">        </span><span class="n">times</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// дожидаемся конца кадра</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForEndOfFrame</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Эта корутина кликает по случайному мусору на экране, выжидает 0.1 секунду и повторяет процесс <code>times</code> раз. Где <code>times</code> это и есть кол-во автокликов.</p>
+<p>Сразу проясню: <code>WaitForEndOfFrame</code> дожидается конца кадра, то есть когда все предыдущие подзадачи на кадре выполнены. Если бы эта корутина содержала <strong>только</strong> <code>WaitForEndOfFrame</code>, это получился бы аналог <code>Update</code> (он работает таким же образом).</p>
+<p>Наверняка вы задаетесь вопросом (а лучше бы задавались), на какой черт нужно дожидаться конца кадра, если мы итак ждем 0.1 секунду?</p>
+<p>Дело в том, что мы работаем с объектами, которые вполне могут быть удалены между кадрами, а также присутствует отрисовка анимаций между "атаками" (в вызываемом методе <code>Attack</code>). Вот это все происходит между кадрами, которые ко времени не привязаны. То есть, если между кадрами будет больше 0.1 секунды (случайный фриз), то пройдет еще одна итерация, до того, как сработала анимация и до того как объект успешно удалится. Последствия вполне себе можете представить.</p>
+<h2 id="_7">Продвинутое применение корутин</h2>
+<p>В примере вы видели, что я написал корутины, которые не останавливаются. Давайте я вам покажу пример корутины, которая останавливается и не только.</p>
+<p>В <a href="../../lvl_4/best_practices/#_2">статье про паттерн Стратегия</a> я уже показывал про проект визуальной новеллы. Там мы с вами смотрели команды по перемещению персонажей по экрану.</p>
+<p>Вообще у любой команды есть корутина по ее выполнению, а также возможность ее прервать.</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ScenarioCommand</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ICommandFinishHandler</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Execute</span><span class="p">();</span><span class="w"> </span><span class="c1">// корутина выполнения</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryForceSkip</span><span class="p">()</span><span class="w"> </span><span class="c1">// прерывание выполнения</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CommandFinish</span><span class="p">()</span><span class="w"> </span><span class="c1">// ???</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Context</span><span class="p">.</span><span class="n">CommandFinish</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Каждая команда сама реализует то, как она выполняется (<code>Execute</code>). Кроме того, нам нужно отдельно прописать ее прерывание (<code>TryForceSkip</code>), чтобы персонаж, например, не оказался непонятно где, если мы посередине пути прервем команду передвижения. А вот <code>CommandFinish</code> стоит запомнить - это темная лошадка, которая нам пригодится.</p>
+<p>Так вот, давайте вспомним команду передвижения:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MoveCharacterCommand</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ScenarioCommand</span><span class="p">,</span><span class="w"> </span><span class="n">IScenarioFunctionalCommand</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Execute</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Context</span><span class="p">.</span><span class="n">CharacterManager</span><span class="p">.</span><span class="n">MoveCharacter</span><span class="p">(</span><span class="n">_charCode</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryForceSkip</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Context</span><span class="p">.</span><span class="n">CharacterManager</span><span class="p">.</span><span class="n">ForceMoveCharacter</span><span class="p">(</span><span class="n">_charCode</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Здесь вместо того, чтобы прописывать что делает корутина, мы возвращаем другую корутину - <code>MoveCharacter</code>. Мы ее рассматривали еще в той статье, и при желании вернитесь туда. Я этим хотел подчеркнуть то, что суть корутины не совсем код, как факт возврата тех самых точек приостановки <code>yield return ...</code>.</p>
+<p>Давайте посмотрим, где команды вообще вызываются - в контроллере сценария:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ссылка на корутину</span>
+<span class="k">private</span><span class="w"> </span><span class="n">Coroutine</span><span class="w"> </span><span class="n">c_executingCommand</span><span class="p">;</span>
+
+<span class="c1">// есть ли корутина выполнения</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsCommandExecuting</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">c_executingCommand</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span>
+
+<span class="c1">// ...</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ExecCommand</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_currentCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_scenario</span><span class="p">[</span><span class="n">_position</span><span class="p">];</span>
+<span class="w">    </span><span class="n">_position</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c_executingCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">_currentCommand</span><span class="p">.</span><span class="n">Execute</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Когда выполняется очередная команда, стартует новая корутина и <strong>ссылка на корутину</strong> сохраняется в поле <code>c_executingCommand</code>. По этому полю можно ее остановить при прерывании:</p>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Space</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsCommandExecuting</span><span class="p">)</span><span class="w"> </span><span class="c1">// если есть корутина выполнения</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_currentCommand</span><span class="p">.</span><span class="n">TryForceSkip</span><span class="p">())</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">StopCoroutine</span><span class="p">(</span><span class="n">c_executingCommand</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;-- остановка</span>
+<span class="w">                </span><span class="n">OnCommandFinished</span><span class="p">();</span><span class="w"> </span><span class="c1">// обозначаем окончание выполнения</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Unable to force skip&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ExecCommand</span><span class="p">();</span><span class="w"> </span><span class="c1">// выполняем следующую</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Полистайте код туда сюда минутку-другую. Потом продолжим.</p>
+<p>Так вот. Сама корутина никому не говорит, что она закончила свою работу. Поэтому в конце каждой команды нужно в явном виде говорить о том, что команда завершена. Этим занимется вызов <code>CommandFinish</code> в абстрактном классе команды. И тут есть одна огромная загвоздка, с которой вы можете столкнуться. Давайте на примере попроще:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Coroutine</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+
+<span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">MyCoroutine</span><span class="p">());</span><span class="w"> </span>
+<span class="p">}</span>
+
+<span class="k">void</span><span class="w"> </span><span class="nf">OnFinish</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">IEnumerator</span><span class="w"> </span><span class="nf">MyCoroutine</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;alive&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">OnFinish</span><span class="p">();</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">WaitForSeconds</span><span class="p">(</span><span class="mf">10f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;still alive&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Мы запускаем корутину и сохраняем на нее ссылку в <code>c</code>. В корутине выводится "alive" в консоль и обнуляется ссылка на корутину. Как вы думаете, что произойдет?</p>
+<p>Ну во-первых, обнуление ссылки не приостанавливает корутину. Поэтому через 10 секунд выведется сообщение "still alive". Но тут есть еще один прикол.</p>
+<p>Все 10 секунд ожидания ссылка на корутину в <code>c</code> <strong>все еще будет</strong>. Не дошло в чем прикол? Посмотрите еще раз код.</p>
+<p>Мы обнулили ссылку (<code>c = null</code> в <code>OnFinish</code>), а только потом поставили ожидание. Даже если мы обнулили ссылку, она <strong>вернется</strong> в <code>c</code>, как только корутина дойдет до любого <code>yield return</code>.</p>
+<p>Поверьте, вы <strong>не хотите</strong> получить ответ почему так. Вам не надо туда лезть. Потому что...</p>
+<p><img alt="" src="../attachments/thin.png" /></p>
+<p>Это действительно тонко. Поймет не каждый.</p>
+<p>Ладно, если серьезно, забейте. Это сделано для того, чтобы можно было прерывать корутину, даже если мы случайно обнулили ссылку. Знать <strong>почему</strong> это так работает вам точно не нужно. Если кто-то захочет объяснения, спросите у меня в лс.</p>
+<p>Из этого вам нужно понять лишь то, что <strong>корутина либо останавливается сама, либо через StopCoroutine</strong>. И проверку того, что она все еще работает <strong>делайте вручную через флаги</strong>, а не через проверку переменной типа <code>Coroutine</code> на <code>null</code>.</p>
+<h2 id="_8">Итог</h2>
+<p>Давайте подытожим для чего используются корутины:</p>
+<ul>
+<li>Для действий с задержками;</li>
+<li>Для периодических, но не каждокадровых задач;</li>
+<li>Для асинхронных операций (ожидание получения данных от сервера например).</li>
+</ul>
+<p>Помните, что корутины это тоже не панацея. Используйте их там, где считаете нужным, а не везде. И не стоит ими заменять <code>Update</code>.</p>
+<h2 id="_9">Задание</h2>
+<p>Заданием для вас будет за время проекта реализовать хотя бы одну корутину, и подробно объяснить, как она работает. (Ренату это тоже касается!)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

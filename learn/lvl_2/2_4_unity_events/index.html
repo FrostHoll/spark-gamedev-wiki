@@ -1,0 +1,2293 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/FrostHoll/spark-gamedev-wiki/learn/lvl_2/2_4_unity_events/">
+      
+      
+        <link rel="prev" href="../2_3_patterns_basics/">
+      
+      
+        <link rel="next" href="../../lvl_3/solid/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2.4 События в Unity - Spark GameDev Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#24-unity" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-header__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spark GameDev Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.4 События в Unity
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../team/team_index/" class="md-tabs__link">
+          
+  
+  
+  Наша команда
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../project/project_index/" class="md-tabs__link">
+          
+  
+  
+  Проект
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../rules/rules_index/" class="md-tabs__link">
+          
+  
+  
+  Правила
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/installation/" class="md-tabs__link">
+          
+  
+  
+  Гайды
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../learn_index/" class="md-tabs__link">
+          
+  
+  
+  Материалы для изучения
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Spark GameDev Wiki" class="md-nav__button md-logo" aria-label="Spark GameDev Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spark GameDev Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Главная
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Наша команда
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/team_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Наша команда
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/meetings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Встречи
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/hall_of_fame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Доска почета
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/spreadsheets/d/10h4VtALQuqD2I97SMZjRGgB_mbOLreOIRDi3-VYRbuI/edit?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Сводка
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Личные дела
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Личные дела
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Hasan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хасан
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexander/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Александр
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Rustem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рустем
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Dinar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Динар
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Vladimir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Владимир
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Alexey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Алексей
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Adelina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Аделина
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../team/files/Renata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Рената
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Проект
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/project_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Проект
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project/mvp_reqs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    О MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Правила
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/rules_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Правила
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/lyrical_degression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Лирическое отступление
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Формат
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/terms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Термины и Звания
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rules/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ответы на частые вопросы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Гайды
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Гайды
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Установка программ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Кто такой этот ваш Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/strive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Работа со Strive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Материалы для изучения
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Материалы для изучения
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Материалы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            1-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/metanit_csharp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База C# Metanit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/1_1_sort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 Сортировка сериалов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_1/1_2_unity_start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2 Поверхность Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            2-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OOP_base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    База ООП
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_1_abstracts_interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.1 Абстрактные классы и интерфейсы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_2_coroutines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.2 Корутины
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_3_patterns_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.3 Паттерны проектирования. Часть 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.4 События в Unity
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.4 События в Unity
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что такое событие?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Что такое событие?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Без использования событий:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-unityevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. С использованием UnityEvent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Типы событий в Unity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Типы событий в Unity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Встроенные события в Unity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-event-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. event Action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-unityaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. UnityAction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-unityevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. UnityEvent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Передача параметров
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Итог
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Итог">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Какие события применять?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    3-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            3-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_3/solid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SOLID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    4-й уровень
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            4-й уровень
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lvl_4/best_practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Хорошие практики
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Что такое событие?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Что такое событие?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Без использования событий:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-unityevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. С использованием UnityEvent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Типы событий в Unity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Типы событий в Unity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Встроенные события в Unity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-event-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. event Action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-unityaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. UnityAction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-unityevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. UnityEvent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Передача параметров
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Итог
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Итог">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Какие события применять?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задание
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="24-unity">2.4 События в Unity</h1>
+<p>Мы уже вскользь упоминали события в разделе <a href="../../lvl_1/1_2_unity_start/">поверхность Unity</a>, когда пытались реализовать открытие двери, когда к ней подходит игрок. Помните? Я тоже думаю, что нет. Так что в этот раз попробуем хорошенько разобраться, что же это такое и как это использовать.</p>
+<h2 id="_1">Что такое событие?</h2>
+<p><strong>Событие</strong> — это способ сообщить объектам в игре: <em>«Эй, что-то произошло!»</em>. Например:</p>
+<ul>
+<li>Игрок подобрал монету.</li>
+<li>Дверь открылась.</li>
+<li>Здоровье упало до нуля.</li>
+</ul>
+<p>Вместо того чтобы постоянно проверять <em>«А не случилось ли что?»</em>, объекты могут <strong>подписаться</strong> на событие и реагировать, когда оно произойдёт.</p>
+<p>Предположим, у нас на сцене есть дверь, которая должна открываться по нажатию кнопки. Давайте рассмотрим следующие примеры реализации:</p>
+<h3 id="1">1. Без использования событий:</h3>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Button</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Door</span><span class="w"> </span><span class="n">door</span><span class="p">;</span><span class="w"> </span><span class="c1">// Жёсткая привязка к двери!</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">OnMouseDown</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">door</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span><span class="w"> </span><span class="c1">// Прямой вызов</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>В этой реализации мы не используем события, так что подумаем, что нужно, чтобы в одном скрипте вызывался метод из другого скрипта? Правильно, нужно, чтобы в одном из них была ссылка на другой. Кнопка теперь имеет ссылку на дверь, что добавляет ненужных зависимостей. К тому же, метод <code>Open()</code> должен быть публичным, что уже нарушает инкапсуляцию. </p>
+<h3 id="2-unityevent">2. С использованием UnityEvent</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Button.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine.Events</span><span class="p">;</span><span class="w"> </span><span class="c1">// Для UnityEvent</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Button</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnClick</span><span class="p">;</span><span class="w"> </span><span class="c1">// Событие, настраиваемое в инспекторе</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">OnMouseDown</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OnClick</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span><span class="w"> </span><span class="c1">// Вызываем событие</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// Door.cs</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Door</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Open</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">up</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Просто двигаем дверь вверх</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>После добавления скрипта Button.cs на кнопку, в инспекторе у кнопки появится окошечко, в котором мы можем указать, какие методы должны подписаться на событие <code>OnClick</code>. Нажмем на "+", перетащим туда наш объект двери и выберем из выпадающего окна <code>Door.Open()</code>. Должно получиться так:</p>
+<p><img alt="" src="../attachments/2_4_event_inspector.png" /></p>
+<p>Итак, после всего этого можно задать вполне логичный вопрос: да, зависимости это плохо, но зачем нам нужны события, если для них нужно делать столько лишних действий? И до этого ведь работало. 
+Давайте по порядку. Сначала разберемся, что мы тут натворили:</p>
+<ol>
+<li>В классе Button мы добавили <code>UnityEvent OnClick</code> и поместили его в <code>OnMouseDown</code>. Он будет кричать всем, кто на него подписался: <em>"Случилось невероятное! Игрок нажал на кнопку! Делайте то, что должны делать!"</em></li>
+<li>В классе Door мы описали простой метод открывания двери. Обратите внимание, теперь он private, все в порядке.</li>
+<li>В инспекторе на кнопке мы указали, что на событие <code>OnClick</code> должен реагировать метод <code>Open()</code> из класса Door. </li>
+</ol>
+<p>Теперь каждый раз, когда игрок нажмет на кнопку, вызовется событие <code>OnClick</code>. Таким образом вызовутся все, кто на него подписан, а подписан у нас пока только метод открывания двери, так что дверь, правильно, откроется. </p>
+<p>Мы избавились от зависимостей и проблем с инкапсуляцией. А еще знаете что? Допустим, что при открывании двери должен проигрываться звук. И включаться свет. И спавниться враги. Вы представляете, сколько нужно будет ссылок на разные объекты, если бы мы не использовали события? А так мы можем просто в инспекторе нажать еще раз "+", перекинуть нужный объект (управляющий звуком, светом, спавном врагов и так далее) и указать метод, который должен вызываться, то есть подписать все эти методы на событие. </p>
+<p>Чем меньше скрипты знают друг о друге - тем лучше.</p>
+<h2 id="unity">Типы событий в Unity</h2>
+<h3 id="1-unity">1. Встроенные события в Unity</h3>
+<p>На самом деле, вы уже давно работаете с событиями, сами того не подозревая. Ведь уже известные и привычные вам <code>OnTriggerEnter()</code>, <code>OnDestroy()</code> и подобные - это тоже события, которые встроены в Unity, их можно спокойно использовать без объявления. </p>
+<h3 id="2-action">2. Action</h3>
+<p><strong>Action</strong> - это что-то вроде указателя на функцию. В него можно поместить другие методы, которые будут вызваны при вызове <code>Action</code>. Вот простой пример, в котором при нажатии на ЛКМ в консоль будет выводиться текст <code>Hello!</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Test</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">exampleAction</span><span class="p">;</span><span class="w"> </span><span class="c1">// Создаем Action</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">exampleAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SayHello</span><span class="p">;</span><span class="w"> </span><span class="c1">// Кладем в Action метод SayHello()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetMouseButtonDown</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">exampleAction</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span><span class="w"> </span>
+<span class="w">            </span><span class="c1">// Каждый кадр проверяется, не нажал ли игрок ЛКМ. </span>
+<span class="w">            </span><span class="c1">// Если нажал, то вызывается то, что внутри Action</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SayHello</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Для присваивания методов в <code>Action</code> можно использовать как <code>+=</code>, то есть подписать методы на <code>Action</code>, так и просто <code>=</code>. Использование знака равно удалит все предыдущие подписки, теперь в нем будет лежать только один новый метод, который мы присвоили. Вызов подписчиков происходит уже знакомым нам образом, через <code>.Invoke()</code>. </p>
+<p>Давайте рассмотрим пример посложнее и поймем, почему <code>Action</code> лучше не использовать для наших задач. </p>
+<p>Допустим, в нашей игре при наступлении дня враги засыпают. Наступление дня - глобальное событие. Создадим скрипт, который будет отвечать за такие события, назовем его <code>GlobalEventManager</code> (для простоты не будем прописывать лишнюю логику, ограничимся нажатиями кнопки и выводом сообщений в консоль):</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GlobalEventManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">OnDayStart</span><span class="p">;</span><span class="w">  </span><span class="c1">// Событие начала дня</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">D</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Наступил день!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnDayStart</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span><span class="w">  </span><span class="c1">// Вызываем всех подписчиков</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Теперь создадим скрипт врага, который и будет подписываться на события глобального менеджера:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GlobalEventManager</span><span class="p">.</span><span class="n">OnDayStart</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Sleep</span><span class="p">;</span><span class="w"> </span><span class="c1">// Подписка на событие начало дня</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Sleep</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Враг заснул!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Тут может быть другая логика, просто для примера </span>
+<span class="w">        </span><span class="c1">// обратимся с какому-нибудь компоненту объекта</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>При нажатии клавиши <code>D</code> (будто бы наступил день), в консоль выведется сообщение <code>Враг заснул!</code>. Вроде бы все нормально. Но что будет, если мы ночью убьем этого врага, а потом наступит день? Будет это:</p>
+<p><img alt="" src="../attachments/2_4_dead_or_alive.png" /></p>
+<p>Объект врага удалился, однако подписка на <code>Action</code> все еще осталась. Для того, чтобы этого не произошло, необходимо в <code>OnDestroy()</code> врага вручную отписываться от события при помощи <code>-=</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GlobalEventManager</span><span class="p">.</span><span class="n">OnDayStart</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Sleep</span><span class="p">;</span><span class="w">  </span><span class="c1">// Отписываемся при смерти</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<p>Если событий будет много, то мы обязательно забудем где-нибудь от чего-нибудь отписаться, что вызовет большое количество ошибок, которые будет трудно отследить. В нашем примере все прошло относительно успешно, ведь вызвалась ошибка, а она могла и не появиться. Кроме того, при использовании <code>Action</code> любой внешний код может перезаписать все события, используя знак равно или обнулить все подписки (<code>= null</code>). </p>
+<h3 id="3-event-action">3. event Action</h3>
+<p><code>event Action</code> это защищенная версия <code>Action</code>, которая:</p>
+<ul>
+<li>Запрещает перезапись событий извне (нельзя использовать знак равно)</li>
+<li>Позволяет только добавлять/удалять подписчиков (через <code>+=</code> и <code>-=</code>)</li>
+</ul>
+<p>Мы не можем вызвать (<code>.Invoke()</code>) событие извне, а только внутри класса, где оно объявлено. Снаружи мы можем только подписываться и отписываться. </p>
+<p>При использовании <code>event Action</code> мы с очень высокой вероятностью будем ловить баги, вызванные тем, что мы забыли где-то отписаться от события, потому что подписываться и отписываться нам может понадобиться не только в <code>Awake()</code> и <code>OnDestroy()</code>. </p>
+<p>Еще один важный момент, который я до сих пор не упомянул: при вызове события нам всегда нужно проверять, есть ли у него вообще подписчики, иначе мы словим ошибку <code>NullReferenceException</code>. Для этого существует короткая запись, нужно поставить знак <code>?</code> перед точкой в вызове:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OnDayStart</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OnDayStart</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Эквиевалентно</span>
+
+<span class="n">OnDayStart</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+</code></pre></div>
+<p>Обновленный работающий код с <code>event Action</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// GlobalEventManager.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GlobalEventManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">event</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">OnDayStart</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">D</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Наступил день!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnDayStart</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Enemy.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GlobalEventManager</span><span class="p">.</span><span class="n">OnDayStart</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Sleep</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Sleep</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Враг заснул!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Отписка!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">GlobalEventManager</span><span class="p">.</span><span class="n">OnDayStart</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Sleep</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-unityaction">4. UnityAction</h3>
+<p><code>UnityAction</code> - это тот же <code>event Action</code>, с небольшими отличиями:</p>
+<ul>
+<li>Может принимать только 4 параметра (против 16 у <code>event Action</code>)</li>
+<li>Можно передавать в <code>AddListener()</code></li>
+</ul>
+<p>Технически это все еще <code>event</code>, так что он имеет преимущества <code>event Action</code> в виде защиты от изменения извне. Этот вариант наиболее предпочтительный в том случае, если нам просто нужно событие, которое мы будем настраивать в коде. </p>
+<h3 id="5-unityevent">5. UnityEvent</h3>
+<p>А вот <code>UnityEvent</code>, как бы это противоречиво не звучало, это уже не <code>event</code> вовсе, а отдельный класс. Поэтому его можно вызвать извне, от этого он не защищен. </p>
+<p>Мы все еще следим за тем, чтобы в нужный момент методы отписывались и прописываем это напрямую в коде. Но эти проблемы запросто решаются с использованием <code>UnityEvent</code>. Давайте перепишем наш код:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// GlobalEventManager.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine.Events</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GlobalEventManager</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnDayStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnityEvent</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="n">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">D</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Наступил день!&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnDayStart</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Enemy.cs</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Enemy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GlobalEventManager</span><span class="p">.</span><span class="n">OnDayStart</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">Sleep</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Sleep</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Rigidbody</span><span class="o">&gt;</span><span class="p">().</span><span class="n">linearVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;Враг заснул!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Для добавления подписчиков на <code>UnityEvent</code> нужно использовать <code>AddListener()</code> вместо <code>+=</code>. Обратите внимание, что мы нигде не отписывались, но при этом при смерти врага и наступлении дня все работает, никаких ошибок, враг уничтожился и сам отписался от события без нашего участия. </p>
+<p>Этот подход хорош еще и тем, что нам необязательно прописывать в коде подписчиков, ведь мы можем делать это через инспектор, как я показывал в самом первом примере с дверью и кнопкой.</p>
+<h2 id="_2">Передача параметров</h2>
+<p>События могут передавать различные значения в вызовы подписчиков. Допустим, мы хотим сделать так, чтобы на экране отображалось количество оставшихся врагов. </p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GlobalEventManager</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Событие с передаваемым значением типа int</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">UnityEvent</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OnEnemyKilled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnityEvent</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendEnemyKilled</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">remainingCount</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Вызываем событие и передаем туда число оставшихся врагов</span>
+<span class="w">        </span><span class="n">OnEnemyKilled</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">remainingCount</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RemainingKillsText</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Подписываемся на событие</span>
+<span class="w">        </span><span class="n">GlobalEventManager</span><span class="p">.</span><span class="n">OnEnemyKilled</span><span class="p">.</span><span class="n">addListener</span><span class="p">(</span><span class="n">EnemyKilled</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EnemyKilled</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">remainingCount</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">().</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Remain&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">remainingCount</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>SendEnemyKilled()</code> будет вызывать какой-нибудь класс, отвечающий за врагов и передавать туда количество оставшихся в живых. При смерти врага вызовется событие <code>OnEnemyKilled</code>, принимающее <code>int</code>. На него подписался метод <code>EnemyKilled(int remainingCount)</code> класса <code>RemainingKillsText</code>, который висит на нашем объекте, отображающем текст. Через <code>UnityEvent&lt;int&gt; OnEnemyKilled</code> он получит количество оставшихся врагов и обновит свой текст.</p>
+<p>Передавать можно примитивы (<code>int</code>, <code>float</code>, <code>bool</code>...), ссылки на Unity-объекты (<code>GameObject</code>, <code>Transform</code>), векторы, цвета и спрайты, и вообще все, что угодно.</p>
+<h2 id="_3">Итог</h2>
+<p>Итак, мы выяснили, что такое события и как с ними работать. События полезно применять:</p>
+<ul>
+<li><strong>Для уменьшения связности кода</strong> (Когда объекты должны взаимодействовать, но не должны знать друг о друге напрямую)</li>
+<li><strong>Вместо постоянных проверок в Update()</strong> (Когда нужно мгновенно реагировать на изменения (здоровье, смерть, подбор предметов) без проверок в <code>Update()</code>)</li>
+<li><strong>Для настройки логики в инспекторе</strong> (Когда дизайнеры или должны настраивать связи между объектами без правки кода)</li>
+<li><strong>Для временных или динамических связей</strong> (Когда объекты могут подписываться/отписываться во время выполнения (например, временные эффекты, модификаторы))</li>
+</ul>
+<h3 id="_4">Какие события применять?</h3>
+<p>Если нужно просто событие, которое настраивается в коде и защищено от изменения извне - <code>UnityAction</code>.</p>
+<p>Если нужно событие, которое легко настраивается через инспектор - <code>UnityEvent</code>.</p>
+<h2 id="_5">Задание</h2>
+<p>Прекрасно, если вы дочитали до конца и пытались параллельно проверять примеры в Unity и играться с ними (если нет - сделайте это), вы уже понимаете, как все это работает и, скорее всего, сможете легко реализовать использование событий на простом примере. Однако дальше нас ждет нечто страшное и неизвестное, а именно Event Bus. Так что заданием будет прописывать события для него. Их будет достаточно, поверьте. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
